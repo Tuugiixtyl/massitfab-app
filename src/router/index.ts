@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Join from '../views/SignInView.vue'
+import HomeView from '@/views/HomeView.vue'
+import Join from '@/views/SignInView.vue'
 
 
 const router = createRouter({

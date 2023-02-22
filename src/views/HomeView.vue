@@ -7,5 +7,5 @@ import Card from "../components/CardWidget.vue";
       <h1>This is Home</h1>
       <Card />
     </div>
-</div>
+  </div>
 </template>

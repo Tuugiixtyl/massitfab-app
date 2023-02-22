@@ -1,30 +1,50 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { onMounted } from "vue";
+import { onMounted, watch, ref } from "vue";
 
 import { RouterLink, RouterView } from 'vue-router'
 
-onMounted(() => {
-  const script = document.createElement("script");
+// Compnents
+import Header from "./layout/Header.vue";
+import Drawer from "./layout/Drawer.vue";
+import Footer from "./layout/Footer.vue";
 
-  script.src = "https://buttons.github.io/buttons.js";
-  script.async = true;
+const themeIndex = ref(0)
+const data = ref(null)
 
-  document.body.appendChild(script);
-});
+watch(themeIndex, async () => {
+  switch(themeIndex.value) {
+  case 0:
+    document.querySelector("#mfabTheme").dataset.theme = "light"
+    break;
+  case 1:
+    document.querySelector("#mfabTheme").dataset.theme = "dracula"
+    break;
+  default:
+    document.querySelector("#mfabTheme").dataset.theme = "dark"
+}
+}, { immediate: true })
+
+// onMounted(() => {
+//   const script = document.createElement("script");
+
+//   script.src = "https://buttons.github.io/buttons.js";
+//   script.async = true;
+
+//   document.body.appendChild(script);
+// });
 </script>
 
 <template>
-  <div class="bg-gray-300 h-screen text-white">
+  <div 
+    id="mfabTheme" 
+    data-theme="synthwave"
+  >
     <main>
+      <Header />
       <RouterView />
+      <Footer class="footer footer-center p-4 bg-base-300 text-base-content" />
     </main>
-
-    <footer class="bg-gray-800 py-4 shadow-lg flex">
-      <div class="text-white mx-auto">
-        ©2023
-      </div>
-    </footer>
-</div>
+  </div>
 </template>

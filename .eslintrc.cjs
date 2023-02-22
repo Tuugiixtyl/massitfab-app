@@ -1,12 +1,21 @@
+/* eslint-env node */
+require("@rushstack/eslint-patch/modern-module-resolution");
+
 module.exports = {
+  root: true,
   extends: [
-    // add more generic rulesets here, such as:
-    // 'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/eslint-config-typescript/recommended",
+    "@vue/eslint-config-prettier",
   ],
-  rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
-  }
-}
+  // env: {
+  //   "vue/setup-compiler-macros": true,
+  // },
+  // overrides: [
+  //   {
+  //     files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}"],
+  //     extends: ["plugin:cypress/recommended"],
+  //   },
+  // ],
+};
