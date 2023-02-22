@@ -42,6 +42,6 @@ const store = reactive({
   //       console.log(err);
   //     });
   // },
-})
+});
 
 export default store;

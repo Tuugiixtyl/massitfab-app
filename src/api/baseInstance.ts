@@ -44,7 +44,7 @@ axiosInstance.interceptors.request.use(
       const refreshToken: string | boolean = getToken("refresh-token");
 
       if (refreshToken && !checkTokenIsExpired(<string>refreshToken)) {
-        let access_token = await getNewAccessToken();
+        const access_token = await getNewAccessToken();
 
         if (access_token) {
           config.headers.Authorization = `Bearer ${access_token}`;
@@ -63,7 +63,7 @@ axiosInstance.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 const callGet = async (url: string) => {

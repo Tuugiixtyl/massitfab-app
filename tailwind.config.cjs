@@ -1,7 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   daisyui: {
-    themes: ["light", "dark", "synthwave", "retro", "forest", "dracula", "cmyk", "autumn", "business", "lemonade", "night", "coffee", "winter"],
+    themes: [
+      "light",
+      "dark",
+      "synthwave",
+      "retro",
+      "forest",
+      "dracula",
+      "cmyk",
+      "autumn",
+      "business",
+      "lemonade",
+      "night",
+      "coffee",
+      "winter",
+    ],
   },
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
@@ -13,6 +27,6 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/line-clamp"),
     require("daisyui"),
-    require("prettier-plugin-tailwindcss")
+    require("prettier-plugin-tailwindcss"),
   ],
 };
