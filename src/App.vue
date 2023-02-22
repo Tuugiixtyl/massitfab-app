@@ -10,15 +10,17 @@ import store from "./store";
 
 const themeIndex = ref(0);
 
-watch(
-  () => store.isLoggedIn,
-  (value) => {
-    if (value) {
-      store.setUserData();
-      // store.setMenu();
-    }
-  },
-);
+//------ will be used for storing data ------//
+
+// watch(
+//   () => store.isLoggedIn,
+//   (value) => {
+//     if (value) {
+//       store.setUserData();
+//       store.setMenu();
+//     }
+//   },
+// );
 
 //------ foreshadowing the future theme toggler -------//
 

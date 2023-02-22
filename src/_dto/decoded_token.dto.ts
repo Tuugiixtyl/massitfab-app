@@ -5,4 +5,6 @@ export interface DecodedTokenDto {
   last_name: string;
   profile_pic: string;
   user_id: number;
+  exp: number;
+  iat: number;
 }
