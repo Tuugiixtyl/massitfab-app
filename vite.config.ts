@@ -27,6 +27,9 @@ export default defineConfig({
     },
   },
   build: {
+    // rollupOptions: {
+    //   external: ["daisy.jpg"],
+    // },
     chunkSizeWarningLimit: 5000,
   },
 });

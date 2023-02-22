@@ -42,6 +42,10 @@ const store = reactive({
   //       console.log(err);
   //     });
   // },
+  // isLoading: true,
+  // setIsLoading(value: boolean) {
+  //   this.isLoading = value;
+  // },
 });
 
 export default store;
