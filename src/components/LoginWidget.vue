@@ -37,7 +37,9 @@
             </label>
           </div>
           <div class="form-control mt-6">
-            <button class="btn-primary btn">Login</button>
+            <button class="btn-info btn">Login</button>
+        <div class="divider"></div>
+            <button class="btn-success btn">Create new account</button>
           </div>
         </div>
       </div>

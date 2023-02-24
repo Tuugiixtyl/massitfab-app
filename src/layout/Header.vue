@@ -1,8 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="navbar">
+  <div class="navbar bg-base-200">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn-ghost btn-circle btn">
+          <input type="checkbox" class="hidden" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -20,7 +22,7 @@
         </label>
         <ul
           tabindex="0"
-          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
         >
           <li><a>Homepage</a></li>
           <li><a>Portfolio</a></li>
@@ -28,7 +30,7 @@
         </ul>
       </div>
     </div>
-    <div class="navbar-center">
+    <div class="navbar-center hidden sm:block">
       <a class="btn-ghost btn text-xl normal-case">MassitFab</a>
     </div>
     <div class="navbar-end">
@@ -51,7 +53,7 @@
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="mask btn-ghost mask-hexagon btn-circle btn">
           <div
-            class="max-h-auto mask mask-hexagon relative max-w-max overflow-hidden rounded-full bg-purple-500 p-5 before:absolute before:-inset-y-4 before:inset-x-0 before:animate-[spin_3s_linear_infinite] before:bg-gradient-to-r before:from-transparent before:to-sky-400 before:transition-[0.5s] before:content-[''] after:absolute after:inset-3 after:z-10 after:content-[''] hover:before:-inset-y-5 hover:before:inset-x-0"
+            class="max-h-auto mask mask-hexagon relative max-w-max overflow-hidden rounded-full bg-primary p-5 before:absolute before:-inset-y-4 before:inset-x-0 before:animate-[spin_3s_linear_infinite] before:bg-gradient-to-r before:from-transparent before:to-secondary before:transition-[0.5s] before:content-[''] after:absolute after:inset-3 after:z-10 after:content-[''] hover:before:-inset-y-5 hover:before:inset-x-0"
           >
             <div
               class="mask mask-hexagon absolute inset-1 z-10 flex items-center justify-center overflow-hidden"
@@ -62,7 +64,7 @@
         </label>
         <ul
           tabindex="0"
-          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
         >
           <li>
             <a class="justify-between">
