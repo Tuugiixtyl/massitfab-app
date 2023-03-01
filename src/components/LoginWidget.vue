@@ -17,9 +17,6 @@ import { login } from "../api/auth";
 // Utils
 import { setToken } from "../utils/cookie_helper";
 
-// Components
-// import FormLayout from "../components/FormLayout.vue";
-
 // Dto
 import type AuthErrorDto from "../_dto/auth_error.dto";
 
