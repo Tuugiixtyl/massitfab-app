@@ -8,15 +8,11 @@ const store = reactive({
     this.isLoggedIn = value;
   },
   // userData: {
-  //   firstName: "",
-  //   lastName: "",
   //   email: "",
   //   profilePic: "",
   //   balance: 0,
-  //   package: "",
-  //   startDate: null,
-  //   endDate: null,
-  //   role_id: 0,
+  //   joinDate: null,
+  //   level: 0,
   // },
   // setUserData() {
   //   getProfile()
@@ -42,10 +38,10 @@ const store = reactive({
   //       console.log(err);
   //     });
   // },
-  // isLoading: true,
-  // setIsLoading(value: boolean) {
-  //   this.isLoading = value;
-  // },
+  isLoading: true,
+  setIsLoading(value: boolean) {
+    this.isLoading = value;
+  },
 });
 
 export default store;

@@ -31,7 +31,10 @@
       </div>
     </div>
     <div class="navbar-center hidden sm:block">
-      <a class="btn-ghost btn text-xl normal-case">MassitFab</a>
+      <a
+        class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
+        >MassitFab</a
+      >
     </div>
     <div class="navbar-end">
       <button class="btn-ghost btn-circle btn">
@@ -58,7 +61,7 @@
             <div
               class="mask mask-hexagon absolute inset-1 z-10 flex items-center justify-center overflow-hidden"
             >
-              <img class="" src="daisy.jpg" />
+              <img class="sepia" src="daisy.jpg" />
             </div>
           </div>
         </label>

@@ -25,12 +25,12 @@ const destroyToken = (name: string): void => {
   Cookie.remove(name);
 };
 
-const addDarkMode = (value: string) => {
-  Cookie.set("dark_mode", value);
-};
+// const addDarkMode = (value: string) => {
+//   Cookie.set("dark_mode", value);
+// };
 
-const getDarkMode = () => {
-  return Cookie.get("dark_mode");
-};
+// const getDarkMode = () => {
+//   return Cookie.get("dark_mode");
+// };
 
-export { setToken, getToken, destroyToken, addDarkMode, getDarkMode };
+export { setToken, getToken, destroyToken };
