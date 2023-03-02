@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import Register from "../components/RegisterWidget.vue";
-import Login from "../components/LoginWidget.vue";
+import Join from "../components/JoinWidget.vue";
 </script>
 
 <template>
-  <Register />
-  <Login />
+  <Join />
 </template>

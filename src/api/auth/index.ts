@@ -60,14 +60,14 @@ const checkEmailExist = async (email: string) => {
   });
 };
 
-interface registerDto {
-  username: string;
-  email: string;
-  password: string;
-}
+// interface registerDto {
+//   email: string;
+//   nickname: string;
+//   password: string;
+// }
 
-const registerUser = async (data: registerDto) => {
-  return await authAxios.post("user/register", data);
+const registerUser = async (data: object) => {
+  return await authAxios.post("/register/", data);
 };
 
 export {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import RegisterWidget from "./RegisterModal.vue";
 
 // Vue Router
 import { useRouter } from "vue-router";
@@ -97,7 +98,9 @@ async function loginUser() {
             />
             <div v-if="v$.email.$errors">
               <div v-for="error in v$.email.$errors" :key="error.$uid">
-                <p class="text-sm italic text-red-500">{{ error.$message }}</p>
+                <span class="label-text-alt italic text-red-500">{{
+                  error.$message
+                }}</span>
               </div>
             </div>
           </div>
@@ -113,7 +116,9 @@ async function loginUser() {
             />
             <div v-if="v$.password.$errors">
               <div v-for="error in v$.password.$errors" :key="error.$uid">
-                <p class="text-sm italic text-red-500">{{ error.$message }}</p>
+                <span class="label-text-alt italic text-red-500">{{
+                  error.$message
+                }}</span>
               </div>
             </div>
             <label class="label">
@@ -125,10 +130,13 @@ async function loginUser() {
           <div class="form-control mt-6">
             <button class="btn-info btn" @click="loginUser">Login</button>
             <div class="divider"></div>
-            <button class="btn-success btn">Create new account</button>
+            <label for="register-modal" class="btn-success btn"
+              >Create new account</label
+            >
           </div>
         </div>
       </div>
+      <RegisterWidget />
     </div>
   </div>
 </template>

@@ -1,7 +1,27 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+
+// Store
+import store from "../store";
+
+// Utils
+import { destroyToken } from "../utils/cookie_helper";
+
+const router = useRouter();
+
+function logout() {
+  store.setIsLoggedIn(false);
+
+  destroyToken("access-token");
+  destroyToken("refresh-token");
+
+  router.push("/");
+}
+</script>
 <template>
-  <div class="navbar bg-base-200">
-    <div class="navbar-start">
+  <ul class="navbar bg-base-200">
+    <li class="navbar-start flex lg:hidden">
       <div class="dropdown">
         <label tabindex="0" class="btn-ghost btn-circle btn">
           <input type="checkbox" class="hidden" />
@@ -29,31 +49,90 @@
           <li><a>About</a></li>
         </ul>
       </div>
-    </div>
-    <div class="navbar-center hidden sm:block">
+      <div class="hidden sm:block lg:hidden">
+        <a
+          class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
+          >MassitFab</a
+        >
+      </div>
+    </li>
+    <li class="navbar-center hidden lg:navbar-start lg:block">
       <a
-        class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
+        class="btn-ghost btn animate-text bg-gradient-to-br from-base-content via-secondary to-accent-content bg-clip-text text-xl normal-case text-transparent"
         >MassitFab</a
       >
-    </div>
-    <div class="navbar-end">
-      <button class="btn-ghost btn-circle btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      <a
+        class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
+        >Features</a
+      >
+      <a
+        class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
+        >Explore</a
+      >
+    </li>
+    <li class="navbar-end space-x-2">
+      <div class="form-control">
+        <div class="input-group">
+          <input
+            type="text"
+            placeholder="Search…"
+            class="input-bordered input"
           />
-        </svg>
-      </button>
-      <div class="dropdown dropdown-end">
+          <button class="btn-square btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        v-if="store.isLoggedIn"
+        class="dropdown dropdown-end hidden sm:dropdown-content sm:inline-block"
+      >
+        <label tabindex="0" class="btn-ghost btn-circle btn">
+          <div class="indicator">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            <span class="badge badge-sm indicator-item">8</span>
+          </div>
+        </label>
+        <div
+          tabindex="0"
+          class="card dropdown-content card-compact mt-3 w-52 bg-base-200 shadow"
+        >
+          <div class="card-body">
+            <span class="text-lg font-bold">8 Items</span>
+            <span class="text-info">Subtotal: $999</span>
+            <div class="card-actions">
+              <button class="btn-primary btn-block btn">View cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-if="store.isLoggedIn" class="dropdown dropdown-end">
         <label tabindex="0" class="mask btn-ghost mask-hexagon btn-circle btn">
           <div
             class="max-h-auto mask mask-hexagon relative max-w-max overflow-hidden rounded-full bg-primary p-5 before:absolute before:-inset-y-4 before:inset-x-0 before:animate-[spin_3s_linear_infinite] before:bg-gradient-to-r before:from-transparent before:to-secondary before:transition-[0.5s] before:content-[''] after:absolute after:inset-3 after:z-10 after:content-[''] hover:before:-inset-y-5 hover:before:inset-x-0"
@@ -61,7 +140,7 @@
             <div
               class="mask mask-hexagon absolute inset-1 z-10 flex items-center justify-center overflow-hidden"
             >
-              <img class="sepia" src="daisy.jpg" />
+              <img src="daisy.jpg" />
             </div>
           </div>
         </label>
@@ -76,9 +155,10 @@
             </a>
           </li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <li><a @click="logout">Logout</a></li>
         </ul>
       </div>
-    </div>
-  </div>
+      <a v-else class="btn" @click="router.push('/join')">JOIN</a>
+    </li>
+  </ul>
 </template>
