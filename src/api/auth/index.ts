@@ -7,16 +7,16 @@ const authAxios = axios.create({
   baseURL: "/auth",
 });
 
-authAxios.interceptors.request.use(
-  function (config: any) {
-    config.headers.Authorization = `Bearer ${getToken("refresh-token")}`;
+// authAxios.interceptors.request.use(
+//   function (config: any) {
+//     config.headers.Authorization = `Bearer ${getToken("refresh-token")}`;
 
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error);
-  },
-);
+//     return config;
+//   },
+//   function (error) {
+//     return Promise.reject(error);
+//   },
+// );
 
 // Add a response interceptor
 authAxios.interceptors.response.use(
@@ -60,13 +60,13 @@ const checkEmailExist = async (email: string) => {
   });
 };
 
-// interface registerDto {
-//   email: string;
-//   nickname: string;
-//   password: string;
-// }
+interface registerDto {
+  email: string;
+  username: string;
+  password: string;
+}
 
-const registerUser = async (data: object) => {
+const registerUser = async (data: registerDto) => {
   return await authAxios.post("/register/", data);
 };
 

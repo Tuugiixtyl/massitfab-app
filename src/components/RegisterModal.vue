@@ -9,16 +9,17 @@ import useVuelidate from "@vuelidate/core";
 import { required, helpers } from "@vuelidate/validators";
 
 // Api
-import { registerUser } from "../api/auth";
+import { login, registerUser } from "../api/auth";
 
 // Store
 import store from "../store";
+import { setToken } from "@/utils/cookie_helper";
 
 const rules = {
   email: {
     required: helpers.withMessage("И-мэйл шаардалгатай!", required),
   },
-  nickname: {
+  username: {
     required: helpers.withMessage("Хэрэглэгчийн нэр шаардалгатай!", required),
   },
   password: {
@@ -29,7 +30,7 @@ const rules = {
 const router = useRouter();
 
 const state = reactive({
-  register: { email: "", nickname: "", password: "" },
+  register: { email: "", username: "", password: "" },
   password: "",
 });
 
@@ -41,20 +42,32 @@ async function register() {
   if (result && state.password === state.register.password) {
     registerUser(state.register)
       .then((response) => {
-        if (response.status === 200) {
-          const { data } = response;
+        if (response.status === 201) {
+          // const response = await login({
+          //   email: state.register.email,
+          //   password: state.register.password,
+          // });
 
-          console.log("success!", data);
+          // if (response.status === 200) {
+            const { data } = response;
 
-          router.push("/join");
+            console.log("success");
+
+            setToken("access-token", data.access);
+            setToken("refresh-token", data.refresh);
+
+            store.setIsLoggedIn(true);
+
+            router.push("/");
+          // }
         }
       })
       .catch((error) => {
         const { response } = error;
-        if (response.status === 401) {
+        if (response.status === 400) {
           const { data } = response;
 
-          console.log("warn!", data);
+          console.log("warn!", data.detail);
         }
       });
   } else {
@@ -97,10 +110,10 @@ async function register() {
             type="text"
             placeholder="Sandy"
             class="input-bordered input"
-            v-model="state.register.nickname"
+            v-model="state.register.username"
           />
-          <div v-if="v$.nickname.$errors">
-            <div v-for="error in v$.nickname.$errors" :key="error.$uid">
+          <div v-if="v$.username.$errors">
+            <div v-for="error in v$.username.$errors" :key="error.$uid">
               <span class="text-md italic text-red-500">{{
                 error.$message
               }}</span>

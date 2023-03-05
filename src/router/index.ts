@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import Join from "@/views/SignInView.vue";
+import Join from "@/views/JoinView.vue";
 import { destroyToken, getToken } from "@/utils/cookie_helper";
 import { checkTokenIsExpired } from "@/utils/jwt_helper";
 import store from "@/store";
