@@ -43,23 +43,16 @@ async function register() {
     registerUser(state.register)
       .then((response) => {
         if (response.status === 201) {
-          // const response = await login({
-          //   email: state.register.email,
-          //   password: state.register.password,
-          // });
+          const { data } = response;
 
-          // if (response.status === 200) {
-            const { data } = response;
+          console.log("success");
 
-            console.log("success");
+          setToken("access-token", data.access);
+          setToken("refresh-token", data.refresh);
 
-            setToken("access-token", data.access);
-            setToken("refresh-token", data.refresh);
+          store.setIsLoggedIn(true);
 
-            store.setIsLoggedIn(true);
-
-            router.push("/");
-          // }
+          router.push("/");
         }
       })
       .catch((error) => {

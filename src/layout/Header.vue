@@ -20,7 +20,7 @@ function logout() {
 }
 </script>
 <template>
-  <ul class="navbar bg-base-200">
+  <ul class="navbar sticky top-0 z-50 bg-base-200">
     <li class="navbar-start flex lg:hidden">
       <div class="dropdown">
         <label tabindex="0" class="btn-ghost btn-circle btn">
@@ -44,9 +44,9 @@ function logout() {
           tabindex="0"
           class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
         >
-          <li><a>Homepage</a></li>
-          <li><a>Portfolio</a></li>
-          <li><a>About</a></li>
+          <li><a @click="router.push('/')">Homepage</a></li>
+          <li><a @click="router.push('/features')">Features</a></li>
+          <li><a @click="router.push('/explore')">Explore</a></li>
         </ul>
       </div>
       <div class="hidden sm:block lg:hidden">
@@ -58,17 +58,23 @@ function logout() {
     </li>
     <li class="navbar-center hidden lg:navbar-start lg:block">
       <a
-        class="btn-ghost btn animate-text bg-gradient-to-br from-base-content via-secondary to-accent-content bg-clip-text text-xl normal-case text-transparent"
-        >MassitFab</a
+        @click="router.push('/')"
+        class="btn-ghost btn animate-text bg-gradient-to-br from-base-content via-secondary to-accent-content bg-clip-text text-xl normal-case text-transparent hover:scale-110 hover:animate-pulse"
       >
+        MassitFab
+      </a>
       <a
+        @click="router.push('/features')"
         class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
-        >Features</a
       >
+        <span class="link-underline link-underline-black"> Features </span>
+      </a>
       <a
+        @click="router.push('/explore')"
         class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
-        >Explore</a
       >
+        <span class="link-underline link-underline-black"> Explore </span>
+      </a>
     </li>
     <li class="navbar-end space-x-2">
       <div class="form-control">
@@ -149,12 +155,12 @@ function logout() {
           class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
         >
           <li>
-            <a class="justify-between">
+            <a class="justify-between" @click="router.push('/profile')">
               Profile
               <span class="badge">New</span>
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><a @click="router.push('/settings')">Settings</a></li>
           <li><a @click="logout">Logout</a></li>
         </ul>
       </div>
@@ -162,3 +168,24 @@ function logout() {
     </li>
   </ul>
 </template>
+<style scoped>
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(hsl(var(--bc)), hsl(var(--bc)));
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+  background-position: 0 100%;
+}
+</style>
