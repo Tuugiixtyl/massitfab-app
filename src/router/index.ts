@@ -11,6 +11,8 @@ import Features from "@/views/FeaturesView.vue";
 import Explore from "@/views/ExploreView.vue";
 import Profile from "@/views/ProfileView.vue";
 import Settings from "@/views/SettingsView.vue";
+import Checkout from "@/views/CartView.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,18 +47,23 @@ const router = createRouter({
       name: "settings",
       component: Settings,
     },
+    {
+      path: "/checkout",
+      name: "cart_checkout",
+      component: Checkout,
+    },
   ],
 });
 
 async function checkLogin() {
-  const refreshToken: string | boolean = getToken("refresh-token");
+  const refreshToken: string | boolean = getToken("access-token");
 
   if (refreshToken && !checkTokenIsExpired(<string>refreshToken)) {
     store.setIsLoggedIn(true);
   } else {
     store.setIsLoggedIn(false);
     destroyToken("access-token");
-    destroyToken("refresh-token");
+    // destroyToken("refresh-token");
   }
 }
 

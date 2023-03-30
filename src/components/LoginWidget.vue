@@ -51,7 +51,6 @@ async function loginUser() {
         console.log("success");
 
         setToken("access-token", data.access);
-        setToken("refresh-token", data.refresh);
 
         store.setIsLoggedIn(true);
 

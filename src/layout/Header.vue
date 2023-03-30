@@ -14,7 +14,6 @@ function logout() {
   store.setIsLoggedIn(false);
 
   destroyToken("access-token");
-  destroyToken("refresh-token");
 
   router.push("/");
 }
@@ -162,7 +161,7 @@ function logout() {
           </li>
           <li><a @click="router.push('/settings')">Settings</a></li>
           <li><a @click="logout">Logout</a></li>
-        </ul>
+          </ul>
       </div>
       <a v-else class="btn" @click="router.push('/join')">JOIN</a>
     </li>

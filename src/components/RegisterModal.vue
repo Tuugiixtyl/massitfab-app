@@ -48,7 +48,6 @@ async function register() {
           console.log("success");
 
           setToken("access-token", data.access);
-          setToken("refresh-token", data.refresh);
 
           store.setIsLoggedIn(true);
 
