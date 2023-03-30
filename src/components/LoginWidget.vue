@@ -19,6 +19,7 @@ import { setToken } from "../utils/cookie_helper";
 
 // Dto
 import type AuthErrorDto from "../_dto/auth_error.dto";
+import ForgotPassword from "../components/ForgotPasswordWidget.vue";
 
 const rules = {
   email: {
@@ -62,7 +63,7 @@ async function loginUser() {
   } catch (error) {
     const { response } = error;
 
-    if (response.status === 401) {
+    if (response.status === 400) {
       const { data } = response;
 
       console.log("Алдаа", (data as AuthErrorDto).message);
@@ -109,8 +110,8 @@ async function loginUser() {
             }}</span>
           </div>
         </div>
-        <label class="label">
-          <a href="#" class="link-hover label-text-alt link"
+        <label for="recoverpass-modal" class="label">
+          <a class="link-hover label-text-alt link"
             >Forgot password?</a
           >
         </label>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Login from "../components/LoginWidget.vue";
 import Register from "../components/RegisterModal.vue";
+import ForgotPasswordWidget from "@/components/ForgotPasswordWidget.vue";
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Register from "../components/RegisterModal.vue";
       </div>
       <Login />
       <Register />
+      <ForgotPasswordWidget />
     </div>
   </div>
 </template>
