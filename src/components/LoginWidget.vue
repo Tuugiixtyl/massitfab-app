@@ -19,7 +19,7 @@ import { setToken } from "../utils/cookie_helper";
 
 // Dto
 import type AuthErrorDto from "../_dto/auth_error.dto";
-import ForgotPassword from "../components/ForgotPasswordWidget.vue";
+
 
 const rules = {
   email: {
