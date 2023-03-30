@@ -41,22 +41,11 @@ axiosInstance.interceptors.request.use(
     if (token && !checkTokenIsExpired(<string>token)) {
       config.headers.Authorization = `Bearer ${token}`;
     } else {
-      const refreshToken: string | boolean = getToken("refresh-token");
+      getNewAccessToken();
 
-      if (refreshToken && !checkTokenIsExpired(<string>refreshToken)) {
-        const access_token = await getNewAccessToken();
-
-        if (access_token) {
-          config.headers.Authorization = `Bearer ${access_token}`;
-        }
-      } else {
-        store.setIsLoggedIn(false);
-
-        destroyToken("refresh-token");
-        destroyToken("access-token");
-
-        router.push("/");
-      }
+      // store.setIsLoggedIn(false);
+      // destroyToken("access-token");
+      // router.push("/");
     }
 
     return config;
