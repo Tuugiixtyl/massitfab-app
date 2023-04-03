@@ -4,11 +4,179 @@ import Layout from "../layout/index.vue";
 </script>
 <template>
   <Layout>
-    <div class="flex items-center justify-center">
+    <div class="">
       <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
-        <h1>This is Explore</h1>
-        <h1>Yay!</h1>
+        
+        <div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a
+    class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
+    >MassitFab</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li tabindex="0">
+        <a>
+          Item1
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item2
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item3
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item4
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item5
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item6
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item7
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item8
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+      <li tabindex="0">
+        <a>
+          Item9
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+        </a>
+        <ul class="p-2 bg-base-100">
+          <li><a>Submenu 1</a></li>
+          <li><a>Submenu 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="grid grid-cols-3 gap-4 place-items-center mt-36">
+  <div>
+    <div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>
+  </div>
+  <div><div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div></div>
+  <div><div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div></div>
+  <div><div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div></div>
+  <div><div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div></div>
+  <div><div class="card w-96 bg-base-100 shadow-xl image-full">
+  <figure><img src="public/card1.jpg" alt="Shoes" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">Item name</h2>
+    <p>Something about item anything what you want Just fill with something. Please ant Thank you!</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div></div>
+
+</div>
+
       </div>
     </div>
+
+    
   </Layout>
 </template>
