@@ -166,6 +166,8 @@ function logout() {
       <a v-else class="btn" @click="router.push('/join')">JOIN</a>
     </li>
   </ul>
+  <div class="h-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500"></div>
+
 </template>
 <style scoped>
 .link-underline {
