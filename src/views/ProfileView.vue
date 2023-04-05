@@ -10,7 +10,7 @@ import Layout from "../layout/index.vue";
           <div
             class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100"
           >
-            <img src="public/daisy.jpg" />
+            <img src="/daisy.jpg" />
           </div>
           <h1 class="mx-3">USER NAME!</h1>
         </div>
@@ -28,7 +28,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
@@ -45,7 +45,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
@@ -62,7 +62,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
@@ -79,7 +79,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
@@ -96,7 +96,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
@@ -113,7 +113,7 @@ import Layout from "../layout/index.vue";
             <div class="card glass w-96">
               <figure>
                 <img
-                  src="public/HSHeaVanScream_The_Brave_Little_Penguin_and_His_Big_Ice_Adventu_f4abce5d-6220-471d-8ffe-d099acefb075.png"
+                  src="/propro.jpg"
                   alt="car!"
                 />
               </figure>
