@@ -1,6 +1,37 @@
 <script setup lang="ts">
+import { reactive, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+
 // Layout
 import Layout from "../layout/index.vue";
+import { getProfile } from "@/api/user";
+
+const state = reactive({
+  username: "",
+  summary: "",
+  profile_picture: "",
+});
+
+const route = useRoute();
+const userParam = route.params.username;
+
+async function getProfileData() {
+  await getProfile(`${userParam}`)
+    .then((response) => {
+      if (response.status === 200) {
+        state.username = response.data.data.username;
+        state.summary = response.data.data.summary;
+        state.profile_picture = response.data.data.profile_picture;
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+onMounted(() => {
+  getProfileData();
+});
 </script>
 <template>
   <Layout>
@@ -12,11 +43,11 @@ import Layout from "../layout/index.vue";
           >
             <img src="/daisy.jpg" />
           </div>
-          <h1 class="mx-3">USER NAME!</h1>
+          <h1 class="mx-3">{{ state.username }}</h1>
         </div>
         <div class="mb-4">
-          <h2 class="mb-4"> 
-            and something something about user, just add something here!!!
+          <h2 class="mb-4">
+            {{ state.summary }}
           </h2>
 
           <button class="btn-outline btn-primary btn mr-2">Products</button>
@@ -27,10 +58,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>
@@ -44,10 +72,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>
@@ -61,10 +86,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>
@@ -78,10 +100,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>
@@ -95,10 +114,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>
@@ -112,10 +128,7 @@ import Layout from "../layout/index.vue";
           <div>
             <div class="card glass w-96">
               <figure>
-                <img
-                  src="/propro.jpg"
-                  alt="car!"
-                />
+                <img src="/propro.jpg" alt="car!" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">Products name!</h2>

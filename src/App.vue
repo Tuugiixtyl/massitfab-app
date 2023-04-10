@@ -54,7 +54,7 @@ const themeIndex = ref(0);
 </script>
 
 <template>
-  <div id="mfabTheme" data-theme="dracula">
+  <div id="mfabTheme" data-theme="light">
     <main>
       <RouterView />
     </main>
