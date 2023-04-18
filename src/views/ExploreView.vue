@@ -6,15 +6,9 @@ import Layout from "../layout/index.vue";
   <Layout>
     <div class="">
       <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
-        <div class="navbar bg-base-100">
-          <div class="flex-1">
-            <a
-              class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
-              >MassitFab</a
-            >
-          </div>
-          <div class="flex-none">
-            <ul class="menu menu-horizontal px-1">
+        <div class="navbar  flex justify-center ">
+          <div class="">
+            <ul class="menu menu-horizontal rounded-lg hover:scale-110">
               <li tabindex="0">
                 <a>
                   Item1
@@ -199,7 +193,7 @@ import Layout from "../layout/index.vue";
           </div>
         </div>
         <div class="mt-36 grid grid-cols-3 place-items-center gap-4">
-          <div>
+          <div class="">
             <div class="card image-full w-96 bg-base-100 shadow-xl">
               <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
               <div class="card-body">
