@@ -14,6 +14,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      "/hideout": {
+        target: "http://127.0.0.1:5000/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/hideout/, ""),
+      },
       "/auth": {
         target: "http://127.0.0.1:5000/auth",
         changeOrigin: true,
