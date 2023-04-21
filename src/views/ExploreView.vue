@@ -6,9 +6,9 @@ import Layout from "../layout/index.vue";
   <Layout>
     <div class="">
       <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
-        <div class="navbar  flex justify-center ">
+        <div class="navbar flex justify-center">
           <div class="">
-            <ul class="menu menu-horizontal rounded-lg hover:scale-110">
+            <ul class="menu menu-horizontal rounded-lg">
               <li tabindex="0">
                 <a>
                   Item1

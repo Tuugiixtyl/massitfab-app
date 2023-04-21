@@ -1,3 +1,4 @@
+import { getProfile } from "@/api/user";
 import { reactive } from "vue";
 
 // Api
@@ -7,6 +8,7 @@ const store = reactive({
   setIsLoggedIn(value: boolean) {
     this.isLoggedIn = value;
   },
+  username: "",
   // userData: {
   //   email: "",
   //   profilePic: "",

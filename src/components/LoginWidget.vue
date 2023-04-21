@@ -19,6 +19,7 @@ import { setToken } from "../utils/cookie_helper";
 
 // Dto
 import type AuthErrorDto from "../_dto/auth_error.dto";
+import { getDecodedAccessToken } from "@/utils/jwt_helper";
 
 
 const rules = {

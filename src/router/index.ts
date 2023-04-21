@@ -12,6 +12,7 @@ import Explore from "@/views/ExploreView.vue";
 import Profile from "@/views/ProfileView.vue";
 import Settings from "@/views/SettingsView.vue";
 import Checkout from "@/views/CartView.vue";
+import NotFound from "@/views/NotFoundView.vue";
 
 
 const router = createRouter({
@@ -51,6 +52,11 @@ const router = createRouter({
       path: "/checkout",
       name: "cart_checkout",
       component: Checkout,
+    },
+    {
+      path: "/404",
+      name: "404",
+      component: NotFound,
     },
   ],
 });

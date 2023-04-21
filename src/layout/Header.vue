@@ -154,7 +154,10 @@ function logout() {
           class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
         >
           <li>
-            <a class="justify-between" @click="router.push('/profile')">
+            <a
+              class="justify-between"
+              @click="router.push(`/profile/${store.username}`)"
+            >
               Profile
               <span class="badge">New</span>
             </a>
