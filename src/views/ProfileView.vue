@@ -6,6 +6,8 @@ import { useRoute } from "vue-router";
 import Layout from "../layout/index.vue";
 import { getProfile } from "@/api/user";
 
+const render = ref(false);
+
 const state = reactive({
   username: "",
   summary: "",
@@ -21,11 +23,19 @@ async function getProfileData() {
       if (response.status === 200) {
         state.username = response.data.data.username;
         state.summary = response.data.data.summary;
-        state.profile_picture = response.data.data.profile_picture;
+        state.profile_picture = "/hideout" + response.data.data.profile_picture;
+
+        render.value = true;
+        console.log(state.profile_picture);
       }
     })
     .catch((error) => {
-      console.log(error);
+      if (error.response.status === 404) {
+        console.clear();
+        console.log(error.response.data.message);
+      } else {
+        console.log(error);
+      }
     });
 }
 
@@ -36,12 +46,15 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="flex items-center justify-center">
-      <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
+      <div
+        v-if="render"
+        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl"
+      >
         <div class="avatar mb-3">
           <div
             class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100"
           >
-            <img src="/daisy.jpg" />
+            <img :src="state.profile_picture" />
           </div>
           <h1 class="mx-3">{{ state.username }}</h1>
         </div>
