@@ -2,19 +2,13 @@
 module.exports = {
   daisyui: {
     themes: [
-      "light",
+      "dracula",
       "dark",
-      "synthwave",
+      "wireframe",
+      "light",
       "retro",
       "forest",
-      "dracula",
-      "cmyk",
-      "autumn",
       "business",
-      "lemonade",
-      "night",
-      "coffee",
-      "winter",
     ],
   },
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],

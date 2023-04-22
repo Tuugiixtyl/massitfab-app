@@ -53,24 +53,24 @@ const router = useRouter();
               <div
                 class="grid h-screen w-1/2 flex-grow place-items-center bg-base-100"
               >
-                <img class="object-contain" src="anya1.png" />
+                <img class="object-contain" src="/ft01.svg" />
               </div>
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-300"
+                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-200"
               >
-                <article class="prose text-center font-serif">
+                <article class="prose text-start font-serif">
                   <h1>Create simple memberships</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     Give customers access to a library of content for as long as
                     they’re subscribed.
                   </p>
                   <h1>Set up subscriptions</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     Let customers pay over time—monthly, quarterly, biannually,
                     yearly, and more.
                   </p>
                   <h1>The sky’s the limit</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     Give your audience the chance to pay what they want for your
                     product.
                   </p>
@@ -84,21 +84,21 @@ const router = useRouter();
             <!-- 50/50 3 MAIN -->
             <div class="flex w-full flex-col lg:flex-row">
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-300"
+                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-200"
               >
-                <article class="prose text-center font-serif">
+                <article class="prose text-start font-serif">
                   <h1>Generate license keys</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     Selling software? We can create your license keys, so you
                     can get back to beta.
                   </p>
                   <h1>Sell multiple versions</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     Allow buyers to pick from PDF, ePub, and Mobi. Even charge
                     more for lossless audio.
                   </p>
                   <h1>Protect your work</h1>
-                  <p>
+                  <p class="-mt-5 pb-10">
                     We can create lightweight DRM to help keep customers honest.
                   </p>
                 </article>
@@ -106,7 +106,7 @@ const router = useRouter();
               <div
                 class="grid h-screen w-1/2 flex-grow place-items-center bg-base-100"
               >
-                <img class="object-cover" src="/anya.png" />
+                <img class="object-cover" src="/ft02.svg" />
               </div>
             </div>
           </div>

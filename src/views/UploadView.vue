@@ -8,20 +8,20 @@ import Layout from "../layout/index.vue";
       <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
         <!-- component -->
         <div
-          class="flex min-h-screen items-center justify-center bg-base-300 p-6"
+          class="flex min-h-screen items-center justify-center bg-base-200 p-6"
         >
           <div class="container mx-auto max-w-screen-lg">
             <div>
-              <h2 class="text-xl font-semibold text-gray-600">Upload Form</h2>
+              <h2 class="text-xl font-semibold">Upload Form</h2>
               <p class="mb-6 text-gray-500">
                 Upload anything you want to share with others ^_^
               </p>
 
-              <div class="mb-6 rounded bg-base-200 p-4 px-4 shadow-lg md:p-8">
+              <div class="mb-6 rounded bg-base-100 p-4 px-4 shadow-lg md:p-8">
                 <div
                   class="grid grid-cols-1 gap-4 gap-y-2 text-sm lg:grid-cols-3"
                 >
-                  <div class="text-gray-600">
+                  <div>
                     <p class="text-lg font-medium">Product/Content Details</p>
                     <p>Please fill out all the fields.</p>
                   </div>
