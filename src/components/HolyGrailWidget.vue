@@ -24,7 +24,7 @@ onMounted(() => {
   <div class="qcard">
     <div class="qcard-content">
       <h3 class="qcard-title">{{ title }}</h3>
-      <h4 class="qcard-subtitle">
+      <h4 class="qcard-subtitle h-5/6 overflow-hidden">
         <span
           v-for="(word, index) in subtitleWords"
           :key="index"
