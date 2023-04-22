@@ -46,14 +46,9 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="flex items-center justify-center">
-      <div
-        v-if="render"
-        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl"
-      >
+      <div v-if="render" class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
         <div class="avatar mb-3">
-          <div
-            class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100"
-          >
+          <div class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
             <img :src="state.profile_picture" />
           </div>
           <h1 class="mx-3">{{ state.username }}</h1>

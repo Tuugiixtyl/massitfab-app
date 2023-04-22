@@ -84,11 +84,21 @@ import Layout from "../layout/index.vue";
             <div
               class="flex h-96 w-full items-center justify-center overflow-hidden rounded-md lg:w-1/2"
             >
-              <img
+              <div class="screen mx-auto h-full w-full object-cover">
+                <div class="screen-image"></div>
+                <div class="screen-overlay"></div>
+                <div class="screen-content">
+                  <i class="screen-icon pi pi-box"></i>
+                  <div class="screen-user">
+                    <span class="name" data-value="journeysalive">journey</span>
+                  </div>
+                </div>
+              </div>
+              <!-- <img
                 class="mx-auto h-full w-full object-cover transition duration-300 ease-in-out hover:scale-110 lg:max-w-2xl"
                 src="arky.jpg"
                 alt="glasses photo"
-              />
+              /> -->
             </div>
           </div>
         </section>
