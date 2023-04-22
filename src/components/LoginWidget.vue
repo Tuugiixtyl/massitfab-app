@@ -64,7 +64,7 @@ async function loginUser() {
     }
   } catch (error) {
     const { response } = error;
-    
+
     if (response.status === 400) {
       const { data } = response;
 
@@ -113,7 +113,9 @@ async function loginUser() {
           </div>
         </div>
         <label for="recoverpass-modal" class="label">
-          <a class="link-hover label-text-alt link">Forgot password?</a>
+          <a class="link-hover label-text-alt link text-[1rem] text-indigo-600"
+            >Forgot password?</a
+          >
         </label>
       </div>
       <div class="form-control mt-6">

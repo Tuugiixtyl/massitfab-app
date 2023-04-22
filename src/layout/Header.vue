@@ -93,19 +93,51 @@ function logout() {
             <span class="text-lg font-bold">8 Items</span>
             <span class="text-info">Subtotal: $999</span>
             <div class="card-actions">
-              <button class="btn-primary btn-block btn">View cart</button>
+              <button
+                @click="router.push('/checkout')"
+                class="btn-secondary btn-block btn"
+              >
+                <i class="pi pi-check-square pr-2" />
+                View cart
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div
         v-if="store.isLoggedIn"
-        class="dropdown dropdown-end hidden sm:dropdown-content sm:inline-block">
+        class="dropdown dropdown-end hidden sm:dropdown-content sm:inline-block"
+      >
         <label tabindex="0" class="btn-ghost btn-circle btn">
           <div class="indicator">
-            <i class="pi pi-upload" style="font-size: 1.25rem"></i>
+            <span class="absolute -right-1 -top-1 flex h-3 w-3">
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex h-3 w-3 rounded-full bg-sky-500"
+              ></span>
+            </span>
+            <i class="pi pi-cloud-upload" style="font-size: 1.25rem"></i>
           </div>
         </label>
+        <div
+          tabindex="0"
+          class="card dropdown-content card-compact mt-3 w-52 bg-base-200 shadow"
+        >
+          <div class="card-body">
+            <span class="text-lg font-bold">List New Products?</span>
+            <div class="card-actions">
+              <button
+                @click="router.push('/upload')"
+                class="btn-primary btn-block btn"
+              >
+                <i class="pi pi-upload pr-2" />
+                Proceed
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div v-if="store.isLoggedIn" class="dropdown dropdown-end">
         <label tabindex="0" class="mask btn-ghost mask-hexagon btn-circle btn">

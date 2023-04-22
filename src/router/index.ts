@@ -13,6 +13,7 @@ import Profile from "@/views/ProfileView.vue";
 import Settings from "@/views/SettingsView.vue";
 import Checkout from "@/views/CartView.vue";
 import NotFound from "@/views/NotFoundView.vue";
+import Upload from "@/views/UploadView.vue";
 
 
 const router = createRouter({
@@ -52,6 +53,11 @@ const router = createRouter({
       path: "/checkout",
       name: "cart_checkout",
       component: Checkout,
+    },
+    {
+      path: "/upload",
+      name: "upload",
+      component: Upload,
     },
     {
       path: "/404",

@@ -38,6 +38,7 @@ onMounted(() => {
     <i class="qcard-icon pi pi-lock" style="font-size: 3rem"></i>
     <img
       :src="`/hideout/${banner}`"
+      onerror="src='/s404.svg ';"
       class="absolute top-0 h-full w-full object-cover"
     />
   </div>
