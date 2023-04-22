@@ -1,198 +1,82 @@
 <script setup lang="ts">
+import { reactive, onMounted, ref } from "vue";
+import HolyGrail from "../components/HolyGrailWidget.vue";
+import { useRouter } from "vue-router";
+
 // Layout
 import Layout from "../layout/index.vue";
+import { getLatestContents } from "@/api/products";
+
+const router = useRouter();
+
+const param = ref("");
+
+const state = reactive({
+  products: [],
+});
+
+async function getExploreData() {
+  await getLatestContents(`${param.value}`)
+    .then((response) => {
+      if (response.status === 200) {
+        state.products = response.data.data[0].products;
+      }
+    })
+    .catch((error) => {
+      if (error.response.status === 404) {
+        console.clear();
+        console.log(error.response.data.message);
+      } else {
+        console.log(error);
+      }
+    });
+}
+
+onMounted(() => {
+  getExploreData();
+});
 </script>
 <template>
   <Layout>
-    <div class="">
+    <div class="flex items-center justify-center">
       <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
-        <div class="navbar flex justify-center">
-          <div class="">
-            <ul class="menu menu-horizontal rounded-lg">
+        <div class="navbar rounded-3xl bg-secondary-focus">
+          <div class="flex-1">
+            <a
+              @click="router.push('/explore')"
+              class="btn-ghost btn text-xl normal-case"
+              >All</a
+            >
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
+              <li><a>Item 1</a></li>
               <li tabindex="0">
-                <a>
-                  Item1
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
+                <a class="btn-ghost btn text-xl normal-case">
+                  Parent
+                  <i class="pi pi-angle-down" />
                 </a>
-                <ul class="bg-base-100 p-2">
+                <ul class="z-50 bg-secondary p-2">
                   <li><a>Submenu 1</a></li>
                   <li><a>Submenu 2</a></li>
                 </ul>
               </li>
-              <li tabindex="0">
-                <a>
-                  Item2
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item3
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item4
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item5
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item6
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item7
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item8
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li tabindex="0">
-                <a>
-                  Item9
-                  <svg
-                    class="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-                    />
-                  </svg>
-                </a>
-                <ul class="bg-base-100 p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
+              <li><a>Item 3</a></li>
             </ul>
           </div>
         </div>
-        <div class="mt-36 grid grid-cols-3 place-items-center gap-4">
+        <div class="divider my-5"></div>
+        <div
+          class="grid place-items-center gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+          <div v-for="product in state.products" :key="product.id">
+            <HolyGrail
+              :title="product.title"
+              :description="product.description"
+              :banner="product.banner"
+              :price="product.price"
+            />
+          </div>
           <div class="">
             <div class="card image-full w-96 bg-base-100 shadow-xl">
               <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
@@ -209,76 +93,15 @@ import Layout from "../layout/index.vue";
             </div>
           </div>
           <div>
-            <div class="card image-full w-96 bg-base-100 shadow-xl">
-              <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
+            <div class="card glass w-96">
+              <figure>
+                <img src="/propro.jpg" alt="car!" />
+              </figure>
               <div class="card-body">
-                <h2 class="card-title">Item name</h2>
-                <p>
-                  Something about item anything what you want Just fill with
-                  something. Please ant Thank you!
-                </p>
+                <h2 class="card-title">Products name!</h2>
+                <p>How to park your car at your garage?</p>
                 <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card image-full w-96 bg-base-100 shadow-xl">
-              <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
-              <div class="card-body">
-                <h2 class="card-title">Item name</h2>
-                <p>
-                  Something about item anything what you want Just fill with
-                  something. Please ant Thank you!
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card image-full w-96 bg-base-100 shadow-xl">
-              <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
-              <div class="card-body">
-                <h2 class="card-title">Item name</h2>
-                <p>
-                  Something about item anything what you want Just fill with
-                  something. Please ant Thank you!
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card image-full w-96 bg-base-100 shadow-xl">
-              <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
-              <div class="card-body">
-                <h2 class="card-title">Item name</h2>
-                <p>
-                  Something about item anything what you want Just fill with
-                  something. Please ant Thank you!
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card image-full w-96 bg-base-100 shadow-xl">
-              <figure><img src="/shadow.jpg" alt="Shoes" /></figure>
-              <div class="card-body">
-                <h2 class="card-title">Item name</h2>
-                <p>
-                  Something about item anything what you want Just fill with
-                  something. Please ant Thank you!
-                </p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Buy Now</button>
+                  <button class="btn-primary btn">Learn now!</button>
                 </div>
               </div>
             </div>

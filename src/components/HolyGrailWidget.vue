@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 
+const props = defineProps(["title", "description", "banner", "price"]);
+
 const subtitle = ref("");
 const subtitleWords = ref<string[]>([]);
 
@@ -15,15 +17,13 @@ const createSubtitle = (text: string): void => {
 };
 
 onMounted(() => {
-  createSubtitle(
-    "But in a much more real sense, I have no idea what I'm doing.",
-  );
+  createSubtitle(props.description);
 });
 </script>
 <template>
   <div class="qcard">
     <div class="qcard-content">
-      <h3 class="qcard-title">I know exactly what I'm doing</h3>
+      <h3 class="qcard-title">{{ title }}</h3>
       <h4 class="qcard-subtitle">
         <span
           v-for="(word, index) in subtitleWords"
@@ -36,6 +36,9 @@ onMounted(() => {
       </h4>
     </div>
     <i class="qcard-icon pi pi-lock" style="font-size: 3rem"></i>
-    <img src="/ae.png" class="absolute top-0 h-full w-full object-cover" />
+    <img
+      :src="`/hideout/${banner}`"
+      class="absolute top-0 h-full w-full object-cover"
+    />
   </div>
 </template>

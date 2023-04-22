@@ -94,11 +94,6 @@ import Layout from "../layout/index.vue";
                   </div>
                 </div>
               </div>
-              <!-- <img
-                class="mx-auto h-full w-full object-cover transition duration-300 ease-in-out hover:scale-110 lg:max-w-2xl"
-                src="arky.jpg"
-                alt="glasses photo"
-              /> -->
             </div>
           </div>
         </section>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import HolyGrail from "../components/HolyGrailWidget.vue"
+import HolyGrail from "../components/HolyGrailWidget.vue";
 
 // Layout
 import Layout from "../layout/index.vue";
@@ -13,6 +13,7 @@ const state = reactive({
   username: "",
   summary: "",
   profile_picture: "",
+  products: [],
 });
 
 const route = useRoute();
@@ -25,6 +26,7 @@ async function getProfileData() {
         state.username = response.data.data.username;
         state.summary = response.data.data.summary;
         state.profile_picture = "/hideout" + response.data.data.profile_picture;
+        state.products = response.data.data.related_products;
 
         render.value = true;
       }
@@ -46,9 +48,14 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="flex items-center justify-center">
-      <div v-if="render" class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
+      <div
+        v-if="render"
+        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl"
+      >
         <div class="avatar mb-3">
-          <div class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
+          <div
+            class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100"
+          >
             <img :src="state.profile_picture" />
           </div>
           <h1 class="mx-3">{{ state.username }}</h1>
@@ -62,77 +69,18 @@ onMounted(() => {
           <button class="btn-primary btn-ghost btn">Membership</button>
         </div>
 
-        <div class="... grid grid-cols-3 place-items-center gap-4">
-          <HolyGrail />
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
+        <div class="divider"></div>
+
+        <div
+          class="grid place-items-center gap-4 lg:grid-cols-2 xl:grid-cols-3"
+        >
+          <div v-for="product in state.products" :key="product.id">
+            <HolyGrail
+              :title="product.title"
+              :description="product.description"
+              :banner="product.banner"
+              :price="product.price"
+            />
           </div>
         </div>
       </div>
