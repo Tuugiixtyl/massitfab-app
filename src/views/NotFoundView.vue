@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 // Layout
 import Layout from "../layout/index.vue";
+
+const router = useRouter();
 </script>
 <template>
   <Layout>
@@ -23,6 +26,7 @@ import Layout from "../layout/index.vue";
           <div class="mt-6 flex items-center gap-x-3">
             <button
               class="flex w-1/2 items-center justify-center gap-x-2 rounded-lg bg-base-content px-5 py-2 text-sm text-neutral-content transition-colors duration-200 hover:bg-neutral-focus sm:w-auto"
+              @click="router.go(n)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

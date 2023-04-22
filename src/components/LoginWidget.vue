@@ -21,7 +21,6 @@ import { setToken } from "../utils/cookie_helper";
 import type AuthErrorDto from "../_dto/auth_error.dto";
 import { getDecodedAccessToken } from "@/utils/jwt_helper";
 
-
 const rules = {
   email: {
     required: helpers.withMessage("Хэрэглэгчийн нэр шаардалгатай!", required),
@@ -53,7 +52,9 @@ async function loginUser() {
         console.log("success");
 
         setToken("access-token", data.access);
+        const dt = getDecodedAccessToken(data.access);
 
+        store.userData.username = dt.username;
         store.setIsLoggedIn(true);
 
         router.push("/");
@@ -63,7 +64,7 @@ async function loginUser() {
     }
   } catch (error) {
     const { response } = error;
-
+    
     if (response.status === 400) {
       const { data } = response;
 
@@ -112,9 +113,7 @@ async function loginUser() {
           </div>
         </div>
         <label for="recoverpass-modal" class="label">
-          <a class="link-hover label-text-alt link"
-            >Forgot password?</a
-          >
+          <a class="link-hover label-text-alt link">Forgot password?</a>
         </label>
       </div>
       <div class="form-control mt-6">

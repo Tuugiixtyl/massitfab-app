@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Averia";
+  src: local("Averia"),
+   url(./assets/averia/Averia-Regular.ttf) format("truetype");
+  font-style: normal;
+}
+
 ::-webkit-scrollbar {
   width: .5rem;
   border-radius: .5rem;
@@ -15,4 +22,125 @@
 
 ::-webkit-scrollbar-thumb {
   background-color: hsl(210, 8%, 35%);
+}
+
+/* Holy Grail */
+
+:root {
+  font-family: "Averia", sans-serif;
+  --qborder: rgb(3, 169, 244);
+  
+  --g1: rgb(98, 0, 234);
+  --g2: rgb(236, 64, 122);
+  --g3: rgb(253, 216, 53);
+}
+
+/* body {
+  background-color: rgb(10, 10, 10);
+  display: grid;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  place-items: center;
+} */
+
+.qcard {
+  aspect-ratio: 1 / 1.6;
+  border: 0.5vmin solid hsl(var(--s));
+  /* border-radius: 0.75rem; */
+  cursor: pointer;
+  position: relative;
+  width: 56vmin;
+}
+
+.qcard:hover:before {
+  background-position: 100% 100%;
+  transform: scale(1.08, 1.03);
+}
+
+.qcard:hover > .qcard-content {
+  background-position: -10% 0%;
+}
+
+.qcard:hover > .qcard-icon {
+  color: white; 
+}
+
+.qcard:hover > .qcard-content > .qcard-subtitle > .qcard-subtitle-word {  
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 0ms, transform 200ms cubic-bezier(.90, .06, .15, .90);
+}
+
+.qcard:before {
+  background: linear-gradient(
+    130deg, 
+    transparent 0% 33%, 
+    hsl(var(--sf)) 66%, 
+    hsl(var(--pf)) 83.5%, 
+    hsl(var(--af)) 100%
+  );
+  background-position: 0% 0%;
+  background-size: 300% 300%;
+  content: "";
+  height: 100%;
+  left: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  transition: background-position 350ms ease, transform 350ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.qcard-content {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 8%, 
+    transparent 8%
+  );
+  background-position: 0% 0%;
+  background-size: 5vmin 5vmin;
+  height: calc(100% - 10vmin);
+  padding: 5vmin;
+  position: relative;
+  transition: background-position 350ms ease;
+  width: calc(100% - 10vmin);
+  z-index: 2;
+}
+
+.qcard-title,
+.qcard-subtitle {
+  color: white;
+  font-family: "Averia", sans-serif;
+  font-weight: 400;
+  margin: 0px;
+}
+
+.qcard-title {
+  font-size: 6vmin;
+}
+
+.qcard-subtitle {
+  font-size: 3vmin;
+  margin-top: 2vmin;
+}
+
+.qcard-subtitle-word {
+  display: inline-block;
+  margin: 0vmin 0.3vmin;
+  opacity: 0;
+  position: relative;  
+  transform: translateY(40%);
+  transition: none;
+}
+
+.qcard-icon {
+  bottom: 0px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 7vmin;
+  left: 0px;
+  margin: 5vmin;
+  position: absolute;
+  transition: color 250ms ease;
+  z-index: 2;
 }

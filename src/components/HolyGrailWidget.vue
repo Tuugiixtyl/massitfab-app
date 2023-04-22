@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+
+const subtitle = ref("");
+const subtitleWords = ref<string[]>([]);
+
+const createWord = (text: string): string => {
+  const word = `${text} `;
+  return word;
+};
+
+const createSubtitle = (text: string): void => {
+  subtitle.value = text;
+  subtitleWords.value = text.split(" ").map(createWord);
+};
+
+onMounted(() => {
+  createSubtitle(
+    "But in a much more real sense, I have no idea what I'm doing.",
+  );
+});
+</script>
+<template>
+  <div class="qcard">
+    <div class="qcard-content">
+      <h3 class="qcard-title">I know exactly what I'm doing</h3>
+      <h4 class="qcard-subtitle">
+        <span
+          v-for="(word, index) in subtitleWords"
+          :key="index"
+          class="qcard-subtitle-word"
+          :style="{ transitionDelay: `${index * 40}ms` }"
+        >
+          {{ word }}
+        </span>
+      </h4>
+    </div>
+    <i class="qcard-icon pi pi-lock" style="font-size: 3rem"></i>
+    <img src="/ae.png" class="absolute top-0 h-full w-full object-cover" />
+  </div>
+</template>

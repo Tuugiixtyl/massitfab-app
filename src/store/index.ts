@@ -8,38 +8,31 @@ const store = reactive({
   setIsLoggedIn(value: boolean) {
     this.isLoggedIn = value;
   },
-  username: "",
-  // userData: {
-  //   email: "",
-  //   profilePic: "",
-  //   balance: 0,
-  //   joinDate: null,
-  //   level: 0,
-  // },
-  // setUserData() {
-  //   getProfile()
-  //     .then((result) => {
-  //       const { data } = result;
+  userData: {
+    username: "",
+    email: "",
+    summary: "",
+    profilePic: "",
+    balance: 0,
+    joinDate: null,
+    // level: 0,
+  },
+  setUserData(key: string) {
+    getProfile(key)
+      .then((result) => {
+        const { data } = result.data;
 
-  //       this.userData.firstName = data.first_name;
-  //       this.userData.lastName = data.last_name;
-  //       this.userData.email = data.email;
-  //       this.userData.profilePic = data.profile_picture;
-  //       this.userData.role_id = data.role_id;
-  //       this.userData.balance = data.balance;
-
-  //       if (data.User_price_package.length > 0) {
-  //         let pricePackage = data.User_price_package[0].Price_package;
-
-  //         this.userData.package = pricePackage.title;
-  //         this.userData.startDate = data.User_price_package[0].start_date;
-  //         this.userData.endDate = data.User_price_package[0].end_date;
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // },
+        this.userData.username = data.username;
+        this.userData.email = data.email;
+        this.userData.summary = data.summary;
+        this.userData.profilePic = data.profile_picture;
+        this.userData.balance = data.balance;
+        this.userData.joinDate = data.created_at;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   isLoading: true,
   setIsLoading(value: boolean) {
     this.isLoading = value;

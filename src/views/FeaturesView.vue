@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 // Layout
 import Layout from "../layout/index.vue";
+
+// Store
+import store from "../store";
+
+const router = useRouter();
 </script>
 <template>
   <Layout>
@@ -104,12 +110,14 @@ import Layout from "../layout/index.vue";
               </div>
             </div>
           </div>
-          <div class="hero my-10 mb-14 min-h-min">
+          <div v-if="!store.isLoggedIn" class="hero my-10 mb-14 min-h-min">
             <article class="prose text-center font-serif">
               <h1>Share your work. Someone out there needs it.</h1>
-              <button class="btn-outline btn animate-bounce">
-                Start Selling
-              </button>
+              <a @click="router.push('/join')">
+                <button class="btn-outline btn animate-bounce">
+                  Start Selling
+                </button>
+              </a>
             </article>
           </div>
         </div>

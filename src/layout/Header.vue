@@ -145,7 +145,7 @@ function logout() {
             <div
               class="mask mask-hexagon absolute inset-1 z-10 flex items-center justify-center overflow-hidden"
             >
-              <img src="daisy.jpg" />
+              <img :src="`/hideout/${store.userData.profilePic}`" />
             </div>
           </div>
         </label>
@@ -156,7 +156,7 @@ function logout() {
           <li>
             <a
               class="justify-between"
-              @click="router.push(`/profile/${store.username}`)"
+              @click="router.push(`/profile/${store.userData.username}`)"
             >
               Profile
               <span class="badge">New</span>

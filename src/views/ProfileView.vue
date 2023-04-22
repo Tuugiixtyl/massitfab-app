@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+import HolyGrail from "../components/HolyGrailWidget.vue"
 
 // Layout
 import Layout from "../layout/index.vue";
@@ -26,7 +27,6 @@ async function getProfileData() {
         state.profile_picture = "/hideout" + response.data.data.profile_picture;
 
         render.value = true;
-        console.log(state.profile_picture);
       }
     })
     .catch((error) => {
@@ -68,20 +68,7 @@ onMounted(() => {
         </div>
 
         <div class="... grid grid-cols-3 place-items-center gap-4">
-          <div>
-            <div class="card glass w-96">
-              <figure>
-                <img src="/propro.jpg" alt="car!" />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Products name!</h2>
-                <p>How to park your car at your garage?</p>
-                <div class="card-actions justify-end">
-                  <button class="btn-primary btn">Learn now!</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <HolyGrail />
           <div>
             <div class="card glass w-96">
               <figure>
