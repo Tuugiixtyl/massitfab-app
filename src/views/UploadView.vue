@@ -5,6 +5,8 @@ import { getCategories, uploadNewContent } from "@/api/products";
 // Layout
 import Layout from "../layout/index.vue";
 import MultiFileUpload from "../components/FileUploadWidget.vue";
+import router from "@/router";
+import store from "@/store";
 
 // Vuelidate
 // import useVuelidate from "@vuelidate/core";
@@ -145,6 +147,8 @@ async function uploadContent() {
     .then((response) => {
       if (response.status === 201) {
         console.log("toast: successful upload");
+
+        router.push('/profile/' + store.userData.username + "/")
       }
     })
     .catch((error) => {
