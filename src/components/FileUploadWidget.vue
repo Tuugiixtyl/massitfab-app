@@ -6,6 +6,7 @@ const emit = defineEmits(["storeImages"]);
 interface Image {
   name: string;
   url: string;
+  file: File;
 }
 
 const images = ref<Image[]>([]);
@@ -20,7 +21,7 @@ const handleImageUpload = (event: Event) => {
         (image) => image.name === file.name && image.url === url,
       );
       if (!existingImage) {
-        images.value.push({ name: file.name, url });
+        images.value.push({ name: file.name, url, file });
       }
     }
   }
@@ -33,7 +34,7 @@ const handleDrop = (event: DragEvent) => {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const url = URL.createObjectURL(file);
-      images.value.push({ name: file.name, url });
+      images.value.push({ name: file.name, url, file });
     }
   }
 };
@@ -51,17 +52,6 @@ function formatFileSize(size: number): string {
     return (size / (1024 * 1024)).toFixed(1) + " MB";
   }
 }
-
-// const submit = async () => {
-//   const formData = new FormData();
-//   for (let i = 0; i < images.value.length; i++) {
-//     formData.append(`images[${i}]`, images.value[i].file);
-//   }
-//   const response = await axios.post('https://your-api-endpoint.com', formData, {
-//     headers: { 'Content-Type': 'multipart/form-data' },
-//   });
-//   console.log(response.data);
-// };
 
 watch(
   () => images.value.length,

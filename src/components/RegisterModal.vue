@@ -40,7 +40,7 @@ async function register() {
   const result = await v$.value.$validate();
 
   if (result && state.password === state.register.password) {
-    registerUser(state.register)
+    await registerUser(state.register)
       .then((response) => {
         if (response.status === 201) {
           const { data } = response;

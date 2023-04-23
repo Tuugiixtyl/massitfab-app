@@ -2,6 +2,7 @@ import {
   callGet,
   callPost,
   callPostByFormData,
+  callPostByFormDataAlt,
   callPostWithoutBody,
   callPut,
 } from "./baseInstance";
@@ -14,4 +15,8 @@ async function getCategories() {
   return await callGet("/category/get/");
 }
 
-export { getLatestContents, getCategories };
+async function uploadNewContent(data: FormData) {
+  return await callPostByFormData("/content/create/", data);
+}
+
+export { getLatestContents, getCategories, uploadNewContent };
