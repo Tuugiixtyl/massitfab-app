@@ -2,7 +2,6 @@ import {
   callGet,
   callPost,
   callPostByFormData,
-  callPostByFormDataAlt,
   callPostWithoutBody,
   callPut,
 } from "./baseInstance";

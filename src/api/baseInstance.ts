@@ -75,14 +75,6 @@ const callPostByFormData = async (url: string, body: FormData) => {
   });
 };
 
-const callPostByFormDataAlt = async (url: string, body: FormData) => {
-  return await axiosInstance.post(url, body, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
-
 const callPut = async (url: string, body: object) => {
   return await axiosInstance.put(url, body);
 };
@@ -98,5 +90,4 @@ export {
   callPostByFormData,
   callPut,
   callDelete,
-  callPostByFormDataAlt,
 };
