@@ -3,9 +3,11 @@ module.exports = {
   daisyui: {
     themes: [
       "dracula",
+      "pastel",
       "dark",
       "wireframe",
       "light",
+      "lofi",
       "retro",
       "forest",
       "business",

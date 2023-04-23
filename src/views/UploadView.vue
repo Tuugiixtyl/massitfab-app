@@ -1,6 +1,40 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
 // Layout
 import Layout from "../layout/index.vue";
+import MultiFileUpload from "../components/FileUploadWidget.vue";
+
+const hashtagsInput = ref("");
+
+// Use computed property to automatically group the hashtags
+const hashtagGroups = computed(() => {
+  const hashtags = hashtagsInput.value
+    .split(",")
+    .map((hashtag) => hashtag.trim());
+
+  const groups: any[] = [];
+
+  hashtags.forEach((hashtag) => {
+    const existingGroup = groups.find((group) => group.includes(hashtag));
+    if (existingGroup) {
+      return;
+    }
+
+    const newGroup = [hashtag];
+
+    groups.forEach((group) => {
+      if (
+        group !== newGroup &&
+        group.some((element: string) => newGroup.includes(element))
+      ) {
+        newGroup.push(...group);
+        groups.splice(groups.indexOf(group), 1);
+      }
+    });
+    groups.push(newGroup);
+  });
+  return groups;
+});
 </script>
 <template>
   <Layout>
@@ -30,6 +64,7 @@ import Layout from "../layout/index.vue";
                     <div
                       class="grid grid-cols-1 gap-4 gap-y-2 text-sm md:grid-cols-5"
                     >
+                      <!-- Title -->
                       <div class="md:col-span-5">
                         <label class="label">
                           <span class="label-text">Title</span>
@@ -40,7 +75,7 @@ import Layout from "../layout/index.vue";
                           class="input-bordered input w-full"
                         />
                       </div>
-
+                      <!-- Description -->
                       <div class="md:col-span-5">
                         <label class="label">
                           <span class="label-text">Description</span>
@@ -50,212 +85,106 @@ import Layout from "../layout/index.vue";
                           class="textarea-bordered textarea textarea-md w-full"
                         ></textarea>
                       </div>
-
-                      <div class="md:col-span-3">
-                        <label for="address">Address / Street</label>
-                        <input
-                          type="text"
-                          name="address"
-                          id="address"
-                          class="mt-1 h-10 w-full rounded border bg-gray-50 px-4"
-                          value=""
-                          placeholder=""
-                        />
-                      </div>
-
-                      <div class="md:col-span-2">
-                        <label for="city">City</label>
-                        <input
-                          type="text"
-                          name="city"
-                          id="city"
-                          class="mt-1 h-10 w-full rounded border bg-gray-50 px-4"
-                          value=""
-                          placeholder=""
-                        />
-                      </div>
-
-                      <div class="md:col-span-2">
-                        <label for="country">Country / region</label>
-                        <div
-                          class="mt-1 flex h-10 items-center rounded border border-gray-200 bg-gray-50"
-                        >
-                          <input
-                            name="country"
-                            id="country"
-                            placeholder="Country"
-                            class="w-full appearance-none bg-transparent px-4 text-gray-800 outline-none"
-                            value=""
-                          />
-                          <button
-                            tabindex="-1"
-                            class="cursor-pointer text-gray-300 outline-none transition-all hover:text-red-600 focus:outline-none"
-                          >
-                            <svg
-                              class="mx-2 h-4 w-4 fill-current"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <line x1="18" y1="6" x2="6" y2="18"></line>
-                              <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                          </button>
-                          <button
-                            tabindex="-1"
-                            for="show_more"
-                            class="cursor-pointer border-l border-gray-200 text-gray-300 outline-none transition-all hover:text-blue-600 focus:outline-none"
-                          >
-                            <svg
-                              class="mx-2 h-4 w-4 fill-current"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <polyline points="18 15 12 9 6 15"></polyline>
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-
-                      <div class="md:col-span-2">
-                        <label for="state">State / province</label>
-                        <div
-                          class="mt-1 flex h-10 items-center rounded border border-gray-200 bg-gray-50"
-                        >
-                          <input
-                            name="state"
-                            id="state"
-                            placeholder="State"
-                            class="w-full appearance-none bg-transparent px-4 text-gray-800 outline-none"
-                            value=""
-                          />
-                          <button
-                            tabindex="-1"
-                            class="cursor-pointer text-gray-300 outline-none transition-all hover:text-red-600 focus:outline-none"
-                          >
-                            <svg
-                              class="mx-2 h-4 w-4 fill-current"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <line x1="18" y1="6" x2="6" y2="18"></line>
-                              <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                          </button>
-                          <button
-                            tabindex="-1"
-                            for="show_more"
-                            class="cursor-pointer border-l border-gray-200 text-gray-300 outline-none transition-all hover:text-blue-600 focus:outline-none"
-                          >
-                            <svg
-                              class="mx-2 h-4 w-4 fill-current"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <polyline points="18 15 12 9 6 15"></polyline>
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-
-                      <div class="md:col-span-1">
-                        <label for="zipcode">Zipcode</label>
-                        <input
-                          type="text"
-                          name="zipcode"
-                          id="zipcode"
-                          class="mt-1 flex h-10 w-full items-center rounded border bg-gray-50 px-4 transition-all"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-
+                      <!-- Upload Files -->
                       <div class="md:col-span-5">
-                        <div class="inline-flex items-center">
-                          <input
-                            type="checkbox"
-                            name="billing_same"
-                            id="billing_same"
-                            class="form-checkbox"
-                          />
-                          <label for="billing_same" class="ml-2"
-                            >My billing address is different than above.</label
+                        <label
+                          for="upload-files"
+                          class="btn-outline btn-block btn"
+                        >
+                          <i
+                            class="pi pi-images pr-2"
+                            style="font-size: 1rem"
+                          ></i>
+                          Upload Images</label
+                        >
+                      </div>
+                      <!-- Categories -->
+                      <div class="md:col-span-4">
+                        <label class="label -mt-2">
+                          <span class="label-text">Categories</span>
+                        </label>
+                        <div class="flex">
+                          <label for="categories" class="sr-only"
+                            >Choose a state</label
                           >
+                          <select
+                            id="categories"
+                            class="z-10 inline-flex flex-shrink-0 items-start rounded-l-lg border py-2.5 text-start text-sm font-medium"
+                          >
+                            <option selected>- Choose a category</option>
+                            <option value="CA">California</option>
+                            <option value="TX">Texas</option>
+                          </select>
+                          <label for="subcategories" class="sr-only"
+                            >Choose a subcategory</label
+                          >
+                          <select
+                            id="subcategories"
+                            class="border-l-1 block w-full rounded-r-lg border p-2.5 text-sm"
+                          >
+                            <option selected>- Choose a subcategory</option>
+                            <option value="CA">California</option>
+                            <option value="TX">Texas</option>
+                            <option value="WH">Washinghton</option>
+                            <option value="FL">Florida</option>
+                            <option value="VG">Virginia</option>
+                            <option value="GE">Georgia</option>
+                            <option value="MI">Michigan</option>
+                          </select>
                         </div>
                       </div>
-
-                      <div class="md:col-span-2">
-                        <label for="soda">How many soda pops?</label>
-                        <div
-                          class="mt-1 flex h-10 w-28 items-center rounded border border-gray-200 bg-gray-50"
-                        >
-                          <button
-                            tabindex="-1"
-                            for="show_more"
-                            class="cursor-pointer border-r border-gray-200 text-gray-500 outline-none transition-all hover:text-blue-600 focus:outline-none"
+                      <!-- Price -->
+                      <div class="md:col-span-1">
+                        <div>
+                          <label
+                            for="price"
+                            class="mb-2 block text-sm font-medium"
+                            >Price</label
                           >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="mx-2 h-4 w-4"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </button>
                           <input
-                            name="soda"
-                            id="soda"
-                            placeholder="0"
-                            class="w-full appearance-none bg-transparent px-2 text-center text-gray-800 outline-none"
-                            value="0"
+                            type="number"
+                            id="price"
+                            class="block w-full rounded-lg border"
+                            placeholder="0.0000"
+                            required
                           />
-                          <button
-                            tabindex="-1"
-                            for="show_more"
-                            class="cursor-pointer border-l border-gray-200 text-gray-500 outline-none transition-all hover:text-blue-600 focus:outline-none"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="mx-2 h-4 w-4 fill-current"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </button>
+                        </div>
+                      </div>
+                      <!-- Sources -->
+                      <div class="md:col-span-5">
+                        <label hashtags class="label">
+                          <span class="label-text">Links/Sources:</span>
+                        </label>
+                        <textarea
+                          id="hashtags"
+                          v-model="hashtagsInput"
+                          class="textarea-bordered textarea w-full"
+                          placeholder="Enter links/sources separated by commas"
+                        ></textarea>
+                        <div v-if="hashtagGroups.length">
+                          <p>Grouped View:</p>
+                          <ul>
+                            <li v-for="group in hashtagGroups" :key="group">
+                              <span>·-</span>
+                              <span
+                                v-for="(hashtag, index) in group"
+                                :key="index"
+                              >
+                                {{ hashtag }}
+                                <span v-if="index !== group.length - 1"
+                                  >,
+                                </span>
+                              </span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
 
                       <div class="text-right md:col-span-5">
                         <div class="inline-flex items-end">
-                          <button
-                            class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-                          >
-                            Submit
+                          <button class="btn-accent btn gap-2">
+                            Upload
+                            <i class="pi pi-send"></i>
                           </button>
                         </div>
                       </div>
@@ -266,6 +195,12 @@ import Layout from "../layout/index.vue";
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <input type="checkbox" id="upload-files" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box w-11/12 max-w-5xl overflow-hidden bg-base-200">
+        <MultiFileUpload />
       </div>
     </div>
   </Layout>
