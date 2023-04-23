@@ -39,7 +39,9 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="flex items-center justify-center">
-      <div class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl">
+      <div
+        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl drop-shadow-lg"
+      >
         <div class="navbar rounded-3xl bg-base-200">
           <div class="flex-1">
             <a

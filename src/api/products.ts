@@ -10,4 +10,8 @@ async function getLatestContents(params: string) {
   return await callGet("/content/get/" + params + "/");
 }
 
-export { getLatestContents };
+async function getCategories() {
+  return await callGet("/category/get/");
+}
+
+export { getLatestContents, getCategories };
