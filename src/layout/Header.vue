@@ -19,7 +19,7 @@ function logout() {
 }
 </script>
 <template>
-  <div class="sticky top-0 z-50 drop-shadow-xl">
+  <div class="sticky top-0 z-[21] drop-shadow-xl">
     <ul class="navbar bg-base-200">
       <li class="navbar-start flex lg:hidden">
         <div class="dropdown">

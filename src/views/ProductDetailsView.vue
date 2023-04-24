@@ -1,6 +1,10 @@
 <template>
+  <!-- The button to open modal -->
+  <label for="product-details" class="btn">open modal</label>
+
+  <!-- Put this part before </body> tag -->
   <input type="checkbox" id="product-details" class="modal-toggle" />
-  <label for="product-details" class="modal z-[1000] cursor-pointer">
+  <label for="product-details" class="modal z-50 cursor-pointer">
     <label
       class="max-h-11/12 card modal-box relative w-11/12 max-w-full bg-base-100 shadow-xl"
       for=""

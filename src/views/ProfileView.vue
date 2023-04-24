@@ -50,7 +50,7 @@ onMounted(() => {
     <div class="flex items-center justify-center">
       <div
         v-if="render"
-        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl"
+        class="min-h-screen flex-col overflow-hidden p-4 text-2xl"
       >
         <div class="avatar mb-3">
           <div
