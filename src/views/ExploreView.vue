@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, onMounted, ref } from "vue";
 import HolyGrail from "../components/HolyGrailWidget.vue";
+import CardWidget from "../components/CardWidget.vue";
 import { useRouter } from "vue-router";
 
 // Layout
@@ -71,6 +72,7 @@ onMounted(() => {
         >
           <div v-for="product in state.products" :key="product.id">
             <HolyGrail
+              v-bind:id="product.id"
               :title="product.title"
               :description="product.description"
               :banner="product.banner"

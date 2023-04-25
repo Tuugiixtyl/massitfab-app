@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 
-import CardWidget from "./CardWidget.vue";
+import CardWidget from "./CardWidget.vue"
 
-const props = defineProps(["title", "description", "banner", "price"]);
+const props = defineProps(["id", "title", "description", "banner", "price"]);
 
 const subtitle = ref("");
 const subtitleWords = ref<string[]>([]);
@@ -46,5 +46,5 @@ onMounted(() => {
       />
     </div>
   </label>
-  <CardWidget />
+  <CardWidget v-bind:id="id" />
 </template>

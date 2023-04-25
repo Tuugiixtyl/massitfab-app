@@ -66,11 +66,13 @@ watch(
 
 <template>
   <div>
-    <main class="container mx-auto h-full max-w-screen-lg">
+    <main
+      class="container mx-auto h-full max-w-screen-lg rounded-lg border border-base-300"
+    >
       <!-- file upload modal -->
       <article
         aria-label="File Upload Modal"
-        class="relative flex h-full flex-col rounded-md bg-white shadow-xl"
+        class="relative flex h-full flex-col rounded-md shadow-xl"
       >
         <!-- overlay -->
         <section class="flex h-full w-full flex-col overflow-auto p-8">
@@ -79,7 +81,7 @@ watch(
               @dragover.prevent
               @drop="handleDrop"
               for="dropzone-file"
-              class="dropzone flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed hover:bg-base-300"
+              class="dropzone flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-base-100 hover:bg-base-300"
               multiple
               accept="image/png, image/gif, image/jpeg, image/jfif, image/ico, image/jpg"
             >
@@ -117,9 +119,7 @@ watch(
             </label>
           </div>
 
-          <h1 class="pb-3 pt-8 font-semibold text-gray-900 sm:text-lg">
-            To Upload
-          </h1>
+          <h1 class="pb-3 pt-8 font-semibold sm:text-lg">To Upload</h1>
 
           <ul id="gallery" class="-m-1 flex flex-1 flex-wrap">
             <li
@@ -132,7 +132,7 @@ watch(
                 src="/uploaded_files.png"
                 alt="no data"
               />
-              <span class="text-small text-gray-500">No files selected</span>
+              <span class="text-small">No files selected</span>
             </li>
             <!-- image template -->
             <li

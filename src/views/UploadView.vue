@@ -129,26 +129,20 @@ function applyCategories() {
 
 async function uploadContent() {
   const formData = new FormData();
-  try {
-    formData.append("title", state.data.title);
-    formData.append("description", state.data.description);
-    formData.append("subcategory_id", selectedSubcategory.value);
-    formData.append("st_price", state.data.st_price);
-    formData.append("source", hashtagsInput.value.replace(/,/g, "&"));
-    for (let i = 0; i < resource.value[0].length; i++) {
-      formData.append(`resource[${i}]`, resource.value[0][i].file);
-    }
-  } catch (error) {
-    console.log(error);
-    return;
+  formData.append("title", state.data.title);
+  formData.append("description", state.data.description);
+  formData.append("subcategory_id", selectedSubcategory.value);
+  formData.append("st_price", state.data.st_price);
+  formData.append("source", hashtagsInput.value.replace(/,/g, "&"));
+  for (let i = 0; i < resource.value[0].length; i++) {
+    formData.append(`resource[${i}]`, resource.value[0][i].file);
   }
-  console.log("lalar", formData.toString());
   await uploadNewContent(formData)
     .then((response) => {
       if (response.status === 201) {
         console.log("toast: successful upload");
 
-        router.push('/profile/' + store.userData.username + "/")
+        router.push("/profile/" + store.userData.username + "/");
       }
     })
     .catch((error) => {
@@ -207,7 +201,7 @@ const selectedCategoryObj = computed(() => {
       >
         <!-- component -->
         <div
-          class="flex min-h-screen items-center justify-center bg-base-200 p-6"
+          class="flex min-h-screen items-center justify-center rounded-lg border border-base-300 bg-base-200 p-6"
         >
           <div class="container mx-auto max-w-screen-lg">
             <div>
@@ -216,7 +210,9 @@ const selectedCategoryObj = computed(() => {
                 Upload anything you want to share with others ^_^
               </p>
 
-              <div class="mb-6 rounded bg-base-100 p-4 px-4 shadow-lg md:p-8">
+              <div
+                class="mb-6 rounded-lg border border-base-300 bg-base-100 p-4 px-4 shadow-lg md:p-8"
+              >
                 <div
                   class="grid grid-cols-1 gap-4 gap-y-2 text-sm lg:grid-cols-3"
                 >

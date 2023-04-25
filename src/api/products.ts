@@ -18,4 +18,13 @@ async function uploadNewContent(data: FormData) {
   return await callPostByFormData("/content/create/", data);
 }
 
-export { getLatestContents, getCategories, uploadNewContent };
+async function getProductDetails(param: number) {
+  return await callGet("/content/get/" + param + "/");
+}
+
+export {
+  getLatestContents,
+  getCategories,
+  uploadNewContent,
+  getProductDetails,
+};

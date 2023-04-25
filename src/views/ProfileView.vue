@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, onMounted, ref } from "vue";
+import { reactive, onMounted, ref, provide } from "vue";
 import { useRoute } from "vue-router";
 import HolyGrail from "../components/HolyGrailWidget.vue";
 
@@ -76,6 +76,7 @@ onMounted(() => {
         >
           <div v-for="product in state.products" :key="product.id">
             <HolyGrail
+              v-bind:id="product.id"
               :title="product.title"
               :description="product.description"
               :banner="product.banner"
