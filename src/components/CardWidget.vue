@@ -1,14 +1,14 @@
 <template>
   <input type="checkbox" id="product-details" class="modal-toggle" />
-  <label for="product-details" class="modal z-[1000] cursor-pointer">
+  <label for="product-details" class="modal z-50 cursor-pointer">
     <label
-      class="max-h-11/12 card modal-box relative w-11/12 max-w-full bg-base-100 shadow-xl"
+      class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl"
       for=""
     >
       <img src="/arky.jpg" alt="image" class="rounded-lg" />
       <div class="card-body">
         <label
-          class="btn-outline btn-sm btn my-5 w-28 gap-2"
+          class="btn-outline btn-sm btn mb-5 w-28 gap-2 -ml-8"
           for="product-details"
         >
           <i class="pi pi-arrow-left"></i>

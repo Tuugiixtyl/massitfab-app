@@ -39,10 +39,8 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="flex items-center justify-center">
-      <div
-        class="z-20 min-h-screen flex-col overflow-hidden p-4 text-2xl drop-shadow-lg"
-      >
-        <div class="navbar rounded-3xl bg-base-200">
+      <div class="min-h-screen flex-col overflow-hidden p-4 text-2xl">
+        <div class="navbar rounded-3xl bg-base-200 shadow-lg">
           <div class="flex-1">
             <a
               @click="router.push('/explore')"
@@ -58,7 +56,7 @@ onMounted(() => {
                   Parent
                   <i class="pi pi-angle-down" />
                 </a>
-                <ul class="z-50 bg-base-300 p-2">
+                <ul class="z-20 bg-base-300 p-2">
                   <li><a>Submenu 1</a></li>
                   <li><a>Submenu 2</a></li>
                 </ul>
