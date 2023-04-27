@@ -38,6 +38,7 @@ function logout() {
         </div>
         <div class="hidden sm:block lg:hidden">
           <a
+            @click="router.push('/')"
             class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
             >MassitFab</a
           >

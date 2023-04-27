@@ -24,7 +24,7 @@ const props = defineProps({
     >
       <div
         role="status"
-        class="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        class="absolute left-1/2 top-2/4 -translate-x-1/2 -translate-y-1/2"
       >
         <svg
           aria-hidden="true"

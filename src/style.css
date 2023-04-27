@@ -388,7 +388,7 @@
 
 @media(max-width: 700px) {
   .screen {
-    scale: 0.6;
+    scale: 1;
     margin-bottom: 0rem;
   }
 }

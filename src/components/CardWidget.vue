@@ -1,74 +1,69 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, reactive } from "vue";
-import { getProductDetails } from "@/api/products";
+import { onBeforeMount, ref } from "vue";
 
-const props = defineProps(["id"]);
+const props = defineProps([
+  "id",
+  "title",
+  "description",
+  "owner",
+  "category",
+  "published",
+  "updated",
+  "gallery",
+  "slink",
+  "price",
+  "modalId",
+]);
 
-const gallery = ref([]);
-const slink = ref([]);
-
-const state = reactive({
-  title: "",
-  description: "",
-  owner: "",
-  category: "",
-  published: "",
-  updated: "",
+const selectedProduct = ref({
+  title: props.title,
+  description: props.description,
+  gallery: props.gallery,
+  slink: props.slink,
 });
 
-async function getContentDetails() {
-  await getProductDetails(props.id)
-    .then((response) => {
-      if (response.status === 200) {
-        const data = response.data.data;
-        state.title = data.title;
-        state.description = data.description;
-        state.owner = data.owner;
-        state.category = data.categories;
-
-        gallery.value = gallery.value.concat(
-          data.gallery.map((path: string) => "/hideout" + path),
-        );
-        slink.value = [...slink.value, ...data.link];
-      }
-    })
-    .catch((error) => {
-      if (error.response.status === 404) {
-        console.clear();
-        console.log(error.response.data.message);
-      } else {
-        console.log(error);
-      }
-    });
-}
-
 onBeforeMount(() => {
-  getContentDetails();
+  selectedProduct.value = {
+    title: props.title,
+    description: props.description,
+    gallery: props.gallery,
+    slink: props.slink,
+  };
 });
 </script>
 <template>
-  <input type="checkbox" id="product-details" class="modal-toggle" />
-  <label for="product-details" class="modal z-50 cursor-pointer">
+  <input type="checkbox" class="modal-toggle" :id="modalId" />
+  <label :for="modalId" class="modal z-50 cursor-pointer">
     <label
       class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl"
       for=""
     >
-      {{ id }}
-      <img :src="gallery[0]" alt="image" class="rounded-lg" />
-      <div class="card-body">
+      <div class="carousel rounded-box h-72">
+        <div
+          class="carousel-item w-full duration-700 ease-in-out"
+          v-for="(img, index) in gallery"
+          :key="index"
+        >
+          <img
+            :src="`${img}`"
+            class="w-full object-cover"
+            :alt="`image ${index}`"
+          />
+        </div>
+      </div>
+
+      <div class="card-body break-all">
         <label
           class="btn-outline btn-sm btn -ml-8 mb-5 w-28 gap-2"
-          for="product-details"
+          :for="modalId"
         >
           <i class="pi pi-arrow-left"></i>
           Back
         </label>
-        <h2 class="card-title">{{ state.title }}</h2>
-        <p>{{ state.description }}</p>
-        <p>{{ state }}</p>
-        <p>{{ gallery }}</p>
-        <p>{{ slink }}</p>
-        <div class="card-actions justify-end">
+        <h2 class="card-title text-5xl">{{ title }}</h2>
+        <p class="text-xl">{{ description }}</p>
+        {{ slink }}
+        <div class="card-actions justify-center md:justify-end">
           <button class="btn-primary btn">Buy Now</button>
         </div>
       </div>

@@ -80,7 +80,7 @@ const router = useRouter();
           </div>
           <!-- 50/50 3 START-->
 
-          <div class="min-h-screen border-t-2 border-neutral">
+          <div class="min-h-screen border-y-2 border-neutral">
             <!-- 50/50 3 MAIN -->
             <div class="flex w-full flex-col lg:flex-row">
               <div

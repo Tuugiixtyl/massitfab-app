@@ -1,12 +1,25 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, reactive } from "vue";
 
-import CardWidget from "./CardWidget.vue"
+import CardWidget from "./CardWidget.vue";
+import { getProductDetails } from "@/api/products";
 
 const props = defineProps(["id", "title", "description", "banner", "price"]);
 
+const modalId = ref(`product-details-${props.id}`);
 const subtitle = ref("");
 const subtitleWords = ref<string[]>([]);
+const gallery = ref<string[]>([]);
+const slink = ref<string[]>([]);
+
+const state = reactive({
+  title: "",
+  description: "",
+  owner: "",
+  category: "",
+  published: "",
+  updated: "",
+});
 
 const createWord = (text: string): string => {
   const word = `${text} `;
@@ -18,12 +31,38 @@ const createSubtitle = (text: string): void => {
   subtitleWords.value = text.split(" ").map(createWord);
 };
 
+async function getContentDetails() {
+  await getProductDetails(props.id)
+    .then((response) => {
+      if (response.status === 200) {
+        const data = response.data.data;
+        state.title = data.title;
+        state.description = data.description;
+        state.owner = data.owner;
+        state.category = data.categories;
+
+        gallery.value = gallery.value.concat(
+          data.gallery.map((path: string) => `/hideout${path}`),
+        );
+        slink.value = [...slink.value, ...data.link];
+      }
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+        console.clear();
+        console.log(error.response.data.message);
+      } else {
+        console.log(error);
+      }
+    });
+}
+
 onMounted(() => {
   createSubtitle(props.description);
 });
 </script>
 <template>
-  <label for="product-details">
+  <label :for="modalId" @click="getContentDetails">
     <div class="qcard">
       <div class="qcard-content">
         <h3 class="qcard-title">{{ title }}</h3>
@@ -46,5 +85,17 @@ onMounted(() => {
       />
     </div>
   </label>
-  <CardWidget v-bind:id="id" />
+  <CardWidget
+    :id="id"
+    :title="state.title"
+    :description="state.description"
+    :owner="state.owner"
+    :category="state.category"
+    :published="state.published"
+    :updated="state.updated"
+    :gallery="gallery"
+    :slink="slink"
+    :price="price"
+    :modalId="modalId"
+  />
 </template>
