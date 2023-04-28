@@ -38,7 +38,7 @@ onBeforeMount(() => {
       class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl"
       for=""
     >
-      <div class="carousel rounded-box h-72">
+      <div class="carousel rounded-box h-screen">
         <div
           class="carousel-item w-full duration-700 ease-in-out"
           v-for="(img, index) in gallery"

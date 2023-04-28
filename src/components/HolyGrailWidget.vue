@@ -11,6 +11,7 @@ const subtitle = ref("");
 const subtitleWords = ref<string[]>([]);
 const gallery = ref<string[]>([]);
 const slink = ref<string[]>([]);
+const cache = ref({});
 
 const state = reactive({
   title: "",
@@ -32,29 +33,50 @@ const createSubtitle = (text: string): void => {
 };
 
 async function getContentDetails() {
-  await getProductDetails(props.id)
-    .then((response) => {
-      if (response.status === 200) {
-        const data = response.data.data;
-        state.title = data.title;
-        state.description = data.description;
-        state.owner = data.owner;
-        state.category = data.categories;
+  // Check if the data is already cached
+  if (cache.value[props.id]) {
+    // If cached data exists, use it directly
+    const cachedData = cache.value[props.id];
+    state.title = cachedData.title;
+    state.description = cachedData.description;
+    state.owner = cachedData.owner;
+    state.category = cachedData.categories;
+    gallery.value = cachedData.gallery;
+    slink.value = cachedData.link;
+  } else {
+    // If data is not cached, fetch it from the API
+    await getProductDetails(props.id)
+      .then((response) => {
+        if (response.status === 200) {
+          const data = response.data.data;
+          state.title = data.title;
+          state.description = data.description;
+          state.owner = data.owner;
+          state.category = data.categories;
 
-        gallery.value = gallery.value.concat(
-          data.gallery.map((path: string) => `/hideout${path}`),
-        );
-        slink.value = [...slink.value, ...data.link];
-      }
-    })
-    .catch((error) => {
-      if (error.response && error.response.status === 404) {
-        console.clear();
-        console.log(error.response.data.message);
-      } else {
-        console.log(error);
-      }
-    });
+          gallery.value = data.gallery.map((path: string) => `/hideout${path}`);
+          slink.value = data.link;
+
+          // Cache the fetched data for this card
+          cache.value[props.id] = {
+            title: state.title,
+            description: state.description,
+            owner: state.owner,
+            categories: state.category,
+            gallery: gallery.value,
+            link: slink.value,
+          };
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          console.clear();
+          console.log(error.response.data.message);
+        } else {
+          console.log(error);
+        }
+      });
+  }
 }
 
 onMounted(() => {
