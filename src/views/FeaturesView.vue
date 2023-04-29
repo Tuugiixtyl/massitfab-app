@@ -13,7 +13,7 @@ const router = useRouter();
     <div class="flex items-center justify-center">
       <div class="z-20 min-h-screen w-full overflow-hidden text-2xl">
         <div class="flex w-full flex-col">
-          <div class="hero min-h-screen">
+          <div class="hero min-h-screen px-5">
             <article class="prose text-center font-serif">
               <h4>Product Features</h4>
               <h1>Built for new beginnings</h1>
@@ -24,7 +24,7 @@ const router = useRouter();
                 and more—right to your audience.
               </p>
               <div
-                class="flex h-96 w-full items-center justify-center overflow-hidden rounded-md"
+                class="flex h-56 w-full items-center justify-center overflow-hidden rounded-md lg:h-96"
               >
                 <img
                   class="mx-auto h-full w-full object-cover transition duration-300 ease-in-out hover:scale-110 lg:max-w-2xl"
@@ -35,7 +35,7 @@ const router = useRouter();
             </article>
           </div>
           <div class="divider"></div>
-          <div class="hero my-10 mb-14 min-h-min">
+          <div class="hero my-10 mb-14 min-h-min px-5">
             <article class="prose text-center font-serif">
               <h4>Payment Integrations</h4>
               <h1>Money, incoming</h1>
@@ -51,12 +51,12 @@ const router = useRouter();
             <!-- 50/50 1 -->
             <div class="flex w-full flex-col lg:flex-row">
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-100 p-20"
+                class="flex h-min w-full flex-grow place-items-center bg-primary p-10 md:p-20 lg:h-screen lg:w-1/2"
               >
                 <img class="object-contain" src="/ft01.svg" />
               </div>
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-200"
+                class="grid h-screen w-full flex-grow place-items-center bg-base-200 p-5 lg:w-1/2"
               >
                 <article class="prose text-start font-serif">
                   <h1>Create simple memberships</h1>
@@ -84,7 +84,7 @@ const router = useRouter();
             <!-- 50/50 3 MAIN -->
             <div class="flex w-full flex-col lg:flex-row">
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-200"
+                class="grid h-screen w-full flex-grow place-items-center bg-base-200 p-5 lg:w-1/2"
               >
                 <article class="prose text-start font-serif">
                   <h1>Generate license keys</h1>
@@ -104,7 +104,7 @@ const router = useRouter();
                 </article>
               </div>
               <div
-                class="grid h-screen w-1/2 flex-grow place-items-center bg-base-100 p-44"
+                class="order-first grid h-min w-full flex-grow place-items-center bg-primary p-10 md:p-44 lg:order-last lg:h-screen lg:w-1/2"
               >
                 <img class="object-cover" src="/ft02.svg" />
               </div>

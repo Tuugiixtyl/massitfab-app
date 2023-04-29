@@ -20,39 +20,19 @@ import Layout from "../layout/index.vue";
 
                 <div class="mt-8 space-y-5">
                   <p class="-mx-2 flex items-center text-base-content">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="mx-2 h-6 w-6 text-blue-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <i
+                      class="pi pi-check-circle pr-2"
+                      style="font-size: 1rem"
+                    ></i>
 
                     <span class="mx-2">Sell anything, to anyone, anywhere</span>
                   </p>
 
                   <p class="-mx-2 flex items-center text-base-content">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="mx-2 h-6 w-6 text-blue-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <i
+                      class="pi pi-check-circle pr-2"
+                      style="font-size: 1rem"
+                    ></i>
 
                     <span class="mx-2"
                       >Deepen connection with the communities</span
@@ -60,20 +40,10 @@ import Layout from "../layout/index.vue";
                   </p>
 
                   <p class="-mx-2 flex items-center text-base-content">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="mx-2 h-6 w-6 text-blue-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <i
+                      class="pi pi-check-circle pr-2"
+                      style="font-size: 1rem"
+                    ></i>
 
                     <span class="mx-2">Easy to Use</span>
                   </p>
