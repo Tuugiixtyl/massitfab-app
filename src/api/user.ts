@@ -26,7 +26,7 @@ async function changePassword(data: object) {
 }
 
 async function getProfile(username: string) {
-  return await callGet("/u/get/" + username + "/");
+  return await callGet(`/u/get/${username}`);
 }
 
 async function changeAvatar(data: FormData) {

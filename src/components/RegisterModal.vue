@@ -51,7 +51,9 @@ async function register() {
 
           store.setIsLoggedIn(true);
 
-          router.push("/");
+          router.push("/").then(() => {
+            router.go(0);
+          });
         }
       })
       .catch((error) => {

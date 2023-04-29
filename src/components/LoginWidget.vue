@@ -57,7 +57,9 @@ async function loginUser() {
         store.userData.username = dt.username;
         store.setIsLoggedIn(true);
 
-        router.push("/");
+        router.push("/").then(() => {
+          router.go(0);
+        });
       }
     } else {
       console.log("Та мэдээлэлээ шалгаад дахин оролдоно уу!");

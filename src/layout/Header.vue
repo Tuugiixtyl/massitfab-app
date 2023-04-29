@@ -31,14 +31,27 @@ function logout() {
             tabindex="0"
             class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-200 p-2 shadow"
           >
-            <li><a @click="router.push('/')">Homepage</a></li>
+            <li>
+              <a
+                @click="
+                  router.push('/').then(() => {
+                    router.go(0);
+                  })
+                "
+                >Homepage</a
+              >
+            </li>
             <li><a @click="router.push('/features')">Features</a></li>
             <li><a @click="router.push('/explore')">Explore</a></li>
           </ul>
         </div>
         <div class="hidden sm:block lg:hidden">
           <a
-            @click="router.push('/')"
+            @click="
+              router.push('/').then(() => {
+                router.go(0);
+              })
+            "
             class="btn-ghost btn animate-text bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-xl normal-case text-transparent"
             >MassitFab</a
           >
@@ -46,7 +59,11 @@ function logout() {
       </li>
       <li class="navbar-center hidden lg:navbar-start lg:block">
         <a
-          @click="router.push('/')"
+          @click="
+            router.push('/').then(() => {
+              router.go(0);
+            })
+          "
           class="btn-ghost btn animate-text bg-gradient-to-br from-base-content via-secondary to-accent-content bg-clip-text text-xl normal-case text-transparent hover:scale-110 hover:animate-pulse"
         >
           MassitFab

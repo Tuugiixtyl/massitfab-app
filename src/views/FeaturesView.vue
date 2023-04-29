@@ -51,7 +51,7 @@ const router = useRouter();
             <!-- 50/50 1 -->
             <div class="flex w-full flex-col lg:flex-row">
               <div
-                class="flex h-min w-full flex-grow place-items-center bg-primary p-10 md:p-20 lg:h-screen lg:w-1/2"
+                class="flex h-min w-full flex-grow place-items-center bg-indigo-500 p-10 md:p-20 lg:h-screen lg:w-1/2"
               >
                 <img class="object-contain" src="/ft01.svg" />
               </div>
@@ -104,7 +104,7 @@ const router = useRouter();
                 </article>
               </div>
               <div
-                class="order-first grid h-min w-full flex-grow place-items-center bg-primary p-10 md:p-44 lg:order-last lg:h-screen lg:w-1/2"
+                class="order-first grid h-min w-full flex-grow place-items-center bg-indigo-500 p-10 md:p-44 lg:order-last lg:h-screen lg:w-1/2"
               >
                 <img class="object-cover" src="/ft02.svg" />
               </div>

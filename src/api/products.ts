@@ -7,7 +7,7 @@ import {
 } from "./baseInstance";
 
 async function getLatestContents(params: string) {
-  return await callGet("/content/get/" + params + "/");
+  return await callGet("/content/get" + params);
 }
 
 async function getCategories() {
@@ -19,7 +19,7 @@ async function uploadNewContent(data: FormData) {
 }
 
 async function getProductDetails(param: number) {
-  return await callGet("/content/get/" + param + "/");
+  return await callGet("/content/get/" + param);
 }
 
 export {
