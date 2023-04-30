@@ -58,7 +58,7 @@ watch(
 </script>
 
 <template>
-  <div id="mfabTheme" data-theme="light">
+  <div id="mfabTheme" data-theme="pastel">
     <main>
       <RouterView />
     </main>

@@ -38,6 +38,9 @@ const router = createRouter({
       path: "/explore",
       name: "explore",
       component: Explore,
+      props: (route) => ({
+        searchTerm: route.query.searchTerm
+      }),
     },
     {
       path: "/profile/:username",

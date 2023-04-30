@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 // Store
@@ -8,6 +9,7 @@ import store from "../store";
 // Utils
 import { destroyToken } from "../utils/cookie_helper";
 
+const searchTerm = ref("");
 const router = useRouter();
 
 function logout() {
@@ -42,7 +44,16 @@ function logout() {
               >
             </li>
             <li><a @click="router.push('/features')">Features</a></li>
-            <li><a @click="router.push('/explore')">Explore</a></li>
+            <li>
+              <a
+                @click="
+                  router.push('/explore').then(() => {
+                    router.go(0);
+                  })
+                "
+                >Explore</a
+              >
+            </li>
           </ul>
         </div>
         <div class="hidden sm:block lg:hidden">
@@ -75,7 +86,11 @@ function logout() {
           <span class="link-underline link-underline-black"> Features </span>
         </a>
         <a
-          @click="router.push('/explore')"
+          @click="
+            router.push('/explore').then(() => {
+              router.go(0);
+            })
+          "
           class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
         >
           <span class="link-underline link-underline-black"> Explore </span>
@@ -85,11 +100,34 @@ function logout() {
         <div class="form-control">
           <div class="input-group">
             <input
+              v-model="searchTerm"
+              @keyup.enter="
+                router
+                  .push({
+                    name: 'explore',
+                    query: { searchTerm: searchTerm },
+                  })
+                  .then(() => {
+                    router.go(0);
+                  })
+              "
               type="text"
               placeholder="Search…"
               class="input-bordered input"
             />
-            <button class="btn-square btn">
+            <button
+              class="btn-square btn"
+              @click="
+                router
+                  .push({
+                    name: 'explore',
+                    query: { searchTerm: searchTerm },
+                  })
+                  .then(() => {
+                    router.go(0);
+                  })
+              "
+            >
               <i class="pi pi-search"></i>
             </button>
           </div>
@@ -128,17 +166,7 @@ function logout() {
           class="dropdown dropdown-end hidden sm:dropdown-content sm:inline-block"
         >
           <label tabindex="0" class="btn-ghost btn-circle btn">
-            <div class="indicator">
-              <span class="absolute -right-1 -top-1 flex h-3 w-3">
-                <span
-                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
-                ></span>
-                <span
-                  class="relative inline-flex h-3 w-3 rounded-full bg-sky-500"
-                ></span>
-              </span>
-              <i class="pi pi-cloud-upload" style="font-size: 1.25rem"></i>
-            </div>
+            <i class="pi pi-cloud-upload" style="font-size: 1.25rem"></i>
           </label>
           <div
             tabindex="0"
@@ -155,6 +183,35 @@ function logout() {
                   Proceed
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+        <div
+          v-if="store.isLoggedIn"
+          class="dropdown dropdown-end hidden sm:dropdown-content sm:inline-block"
+        >
+          <label tabindex="0" class="btn-ghost btn-circle btn">
+            <div class="indicator">
+              <span class="absolute -right-1 -top-1 flex h-3 w-3">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-3 w-3 rounded-full bg-sky-500"
+                ></span>
+              </span>
+              <i class="pi pi-bell" style="font-size: 1.25rem"></i>
+            </div>
+          </label>
+          <div
+            tabindex="0"
+            class="card dropdown-content card-compact mt-3 w-52 bg-base-200 shadow"
+          >
+            <div class="card-body">
+              <span class="text-lg font-bold"
+                >An empty notif says more than a full one!</span
+              >
+              <div class="card-actions"></div>
             </div>
           </div>
         </div>

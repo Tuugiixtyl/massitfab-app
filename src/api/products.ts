@@ -11,15 +11,19 @@ async function getLatestContents(params: string) {
 }
 
 async function getCategories() {
-  return await callGet("/category/get/");
+  return await callGet("/category/get");
 }
 
 async function uploadNewContent(data: FormData) {
-  return await callPostByFormData("/content/create/", data);
+  return await callPostByFormData("/content/create", data);
 }
 
 async function getProductDetails(param: number) {
   return await callGet("/content/get/" + param);
+}
+
+async function searchProduct(params: string) {
+  return await callGet(`/content/search${params}`);
 }
 
 export {
@@ -27,4 +31,5 @@ export {
   getCategories,
   uploadNewContent,
   getProductDetails,
+  searchProduct,
 };
