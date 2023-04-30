@@ -4,7 +4,13 @@ import { onMounted, ref, reactive } from "vue";
 import CardWidget from "./CardWidget.vue";
 import { getProductDetails } from "@/api/products";
 
-const props = defineProps(["id", "title", "description", "banner", "price"]);
+const props = defineProps([
+  "id",
+  "title",
+  "description",
+  "banner",
+  "price",
+]);
 
 const modalId = ref(`product-details-${props.id}`);
 const subtitle = ref("");

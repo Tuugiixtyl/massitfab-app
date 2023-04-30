@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref, onMounted } from "vue";
 
 // Api
-import { toggleWishlist, cartToggle, getWishlist, getCartList } from "@/api/products";
+import { toggleWishlist, cartToggle } from "@/api/products";
 
 // Store
 import store from "../store";
@@ -52,27 +52,6 @@ async function toggleCartListing() {
     });
 }
 
-async function getTogglers() {
-  await getWishlist()
-    .then((response) => {
-      const data = response.data.data.wishlist_items;
-      wishlisted.value = data.some((item) => item.id === props.id);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  await getCartList()
-    .then((response) => {
-      const data = response.data.data.in_cart;
-      in_cart.value = data.some((item) => item.id === props.id);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-
 onBeforeMount(() => {
   selectedProduct.value = {
     title: props.title,
@@ -81,8 +60,17 @@ onBeforeMount(() => {
     slink: props.slink,
   };
   if (store.isLoggedIn) {
-    getTogglers();
-  };
+    const wishlistData = store.wishlist;
+    const inCartData = store.in_cart;
+
+    if (wishlistData && wishlistData.some((item) => item.id === props.id)) {
+      wishlisted.value = true;
+    }
+
+    if (inCartData && inCartData.some((item) => item.id === props.id)) {
+      in_cart.value = true;
+    }
+  }
 });
 </script>
 <template>

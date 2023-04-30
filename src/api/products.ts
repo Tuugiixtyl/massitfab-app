@@ -7,7 +7,7 @@ import {
 } from "./baseInstance";
 
 async function getLatestContents(params: string) {
-  return await callGet("/content/get" + params);
+  return await callGet(`/content/get${params}`);
 }
 
 async function getCategories() {
@@ -19,7 +19,7 @@ async function uploadNewContent(data: FormData) {
 }
 
 async function getProductDetails(param: number) {
-  return await callGet("/content/get/" + param);
+  return await callGet(`/content/get/${param}`);
 }
 
 async function searchProduct(params: string) {
@@ -27,7 +27,7 @@ async function searchProduct(params: string) {
 }
 
 async function toggleWishlist(data: FormData) {
-  return await callPostByFormData("/u/toggle/wishlist", data);
+  return await callPostByFormData("/u/wishlist/toggle", data);
 }
 
 async function cartToggle(param: number) {

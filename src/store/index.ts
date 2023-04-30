@@ -33,6 +33,14 @@ const store = reactive({
         console.log(err);
       });
   },
+  wishlist: [],
+  setWishlist(value: never[]) {
+    this.wishlist = value;
+  },
+  in_cart: [],
+  setCartList(value: never[]) {
+    this.in_cart = value;
+  },
   isLoading: true,
   setIsLoading(value: boolean) {
     this.isLoading = value;

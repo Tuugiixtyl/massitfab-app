@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { reactive, onMounted, ref, computed, watch } from "vue";
+import { reactive, onBeforeMount, ref, computed, watch } from "vue";
 import HolyGrail from "../components/HolyGrailWidget.vue";
 import { useRouter } from "vue-router";
 
 // Layout
 import Layout from "../layout/index.vue";
-import { getLatestContents, searchProduct } from "@/api/products";
+import {
+  getLatestContents,
+  searchProduct,
+  getCartList,
+  getWishlist,
+} from "@/api/products";
+import store from "@/store";
 
 const props = defineProps({
   searchTerm: String,
@@ -99,6 +105,17 @@ function scrollToTop() {
     behavior: "smooth",
   });
 }
+async function getTogglers() {
+  try {
+    const wishlistResponse = await getWishlist();
+    store.setWishlist(wishlistResponse.data.data.wishlist_items);
+
+    const cartListResponse = await getCartList();
+    store.setCartList(cartListResponse.data.data.in_cart);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const displayedPageNumbers = computed(() => {
   const startPage = Math.max(currentPage.value - maxDisplayedPageNumbers, 1);
@@ -115,12 +132,15 @@ const displayedPageNumbers = computed(() => {
   );
 });
 
-onMounted(async () => {
+onBeforeMount(async () => {
+  if (store.isLoggedIn) {
+    await getTogglers();
+  };
   if (props.searchTerm === undefined || props.searchTerm === "") {
     await fetchData(currentPage.value);
   } else {
     await fetchSearchData(currentPage.value);
-  }
+  };
 });
 
 watch(pagination, () => {
@@ -229,7 +249,7 @@ watch(pagination, () => {
               :key="pageNumber"
             >
               <p
-                class="mr-4 cursor-pointer border-t border-transparent px-2 pt-3 text-base font-medium leading-none text-base-content hover:border-t-primary hover:text-primary duration-300 ease-in-out"
+                class="mr-4 cursor-pointer border-t border-transparent px-2 pt-3 text-base font-medium leading-none text-base-content duration-300 ease-in-out hover:border-t-primary hover:text-primary"
                 @click="goToPage(pageNumber)"
                 :class="{
                   'border-t-indigo-400 text-primary':
