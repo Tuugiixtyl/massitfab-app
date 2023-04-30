@@ -33,7 +33,7 @@ authAxios.interceptors.response.use(
 );
 
 const login = async (formData: object) => {
-  return await authAxios.post("/login/", formData);
+  return await authAxios.post("/login", formData);
 };
 
 const getAccessToken = async () => {
@@ -67,7 +67,7 @@ interface registerDto {
 }
 
 const registerUser = async (data: registerDto) => {
-  return await authAxios.post("/register/", data);
+  return await authAxios.post("/register", data);
 };
 
 export {

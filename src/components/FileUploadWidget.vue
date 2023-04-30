@@ -70,7 +70,7 @@ watch(
       <!-- file upload modal -->
       <article
         aria-label="File Upload Modal"
-        class="relative flex h-full flex-col rounded-3xl border bg-base-100 shadow-xl duration-300 ease-in-out hover:border-base-content"
+        class="relative flex h-full flex-col rounded-3xl border border-base-300 bg-base-100 shadow-xl duration-300 ease-in-out hover:border-base-content"
       >
         <!-- overlay -->
         <section class="flex h-full w-full flex-col overflow-auto p-8">

@@ -132,7 +132,9 @@ watch(pagination, () => {
   <Layout>
     <div class="flex items-center justify-center">
       <div class="min-h-screen flex-col overflow-hidden p-4 text-2xl">
-        <div class="navbar rounded-3xl bg-base-200 shadow-lg">
+        <div
+          class="navbar rounded-3xl border border-base-300 bg-base-200 shadow-lg"
+        >
           <div class="flex-1">
             <a
               @click="
@@ -182,7 +184,7 @@ watch(pagination, () => {
             class="flex w-full items-center justify-between border-t border-base-300 lg:w-3/4"
           >
             <div
-              class="flex items-center pt-3 text-base-content"
+              class="flex items-center pt-3 text-base-content duration-300 ease-in-out"
               :class="{
                 'cursor-pointer hover:text-primary': currentPage !== 1,
                 'cursor-not-allowed hover:text-error': currentPage === 1,
@@ -227,7 +229,7 @@ watch(pagination, () => {
               :key="pageNumber"
             >
               <p
-                class="mr-4 cursor-pointer border-t border-transparent px-2 pt-3 text-base font-medium leading-none text-base-content hover:border-t-primary hover:text-primary"
+                class="mr-4 cursor-pointer border-t border-transparent px-2 pt-3 text-base font-medium leading-none text-base-content hover:border-t-primary hover:text-primary duration-300 ease-in-out"
                 @click="goToPage(pageNumber)"
                 :class="{
                   'border-t-indigo-400 text-primary':
@@ -238,7 +240,7 @@ watch(pagination, () => {
               </p>
             </div>
             <div
-              class="flex items-center pt-3 text-base-content"
+              class="flex items-center pt-3 text-base-content duration-300 ease-in-out"
               :class="{
                 'cursor-pointer hover:text-primary': currentPage !== pageCount,
                 'cursor-not-allowed hover:text-error':

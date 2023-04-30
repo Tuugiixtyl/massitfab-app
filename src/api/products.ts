@@ -26,10 +26,30 @@ async function searchProduct(params: string) {
   return await callGet(`/content/search${params}`);
 }
 
+async function toggleWishlist(data: FormData) {
+  return await callPostByFormData("/u/toggle/wishlist", data);
+}
+
+async function cartToggle(param: number) {
+  return await callPostWithoutBody(`/cart/toggle/${param}`);
+}
+
+async function getWishlist() {
+  return await callGet(`/u/wishlist/getAll`);
+}
+
+async function getCartList() {
+  return await callGet(`/cart/get`);
+}
+
 export {
   getLatestContents,
   getCategories,
   uploadNewContent,
   getProductDetails,
   searchProduct,
+  toggleWishlist,
+  cartToggle,
+  getWishlist,
+  getCartList,
 };

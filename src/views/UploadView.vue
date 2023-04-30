@@ -211,7 +211,7 @@ const selectedCategoryObj = computed(() => {
               </p>
 
               <div
-                class="mb-6 rounded-lg border hover:border-base-content bg-base-100 p-4 px-4 shadow-lg md:p-8 ease-in-out duration-300"
+                class="mb-6 rounded-lg border border-base-300 bg-base-100 p-4 px-4 shadow-lg duration-300 ease-in-out hover:border-base-content md:p-8"
               >
                 <div
                   class="grid grid-cols-1 gap-4 gap-y-2 text-sm lg:grid-cols-3"
