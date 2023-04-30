@@ -3,8 +3,8 @@ import { reactive, ref, computed, onMounted } from "vue";
 import { getCategories, uploadNewContent } from "@/api/products";
 
 // Layout
-import Layout from "../layout/index.vue";
-import MultiFileUpload from "../components/FileUploadWidget.vue";
+import Layout from "@/layout/index.vue";
+import MultiFileUpload from "@/components/FileUploadWidget.vue";
 import router from "@/router";
 import store from "@/store";
 

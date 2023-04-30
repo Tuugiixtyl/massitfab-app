@@ -3,8 +3,8 @@ import { reactive, onBeforeMount, ref, computed, watch } from "vue";
 import { useRoute } from "vue-router";
 
 // Layout
-import Layout from "../layout/index.vue";
-import HolyGrail from "../components/HolyGrailWidget.vue";
+import Layout from "@/layout/index.vue";
+import HolyGrail from "@/components/HolyGrailWidget.vue";
 
 // api
 import { getProfile } from "@/api/user";
@@ -152,7 +152,7 @@ watch(pagination, () => {
         class="flex w-full items-center justify-between border-t border-base-300 px-12 lg:w-3/4 lg:px-0"
       >
         <div
-          class="flex items-center pt-3 text-base-content"
+          class="flex items-center pt-3 text-base-content duration-300"
           :class="{
             'cursor-pointer hover:text-primary': currentPage !== 1,
             'cursor-not-allowed hover:text-error': currentPage === 1,
@@ -197,7 +197,7 @@ watch(pagination, () => {
           :key="pageNumber"
         >
           <p
-            class="text-md mr-4 cursor-pointer border-t border-transparent px-2 pt-3 font-medium leading-none text-base-content hover:border-t-primary hover:text-primary"
+            class="text-md mr-4 cursor-pointer border-t border-transparent px-2 pt-3 font-medium leading-none text-base-content hover:border-t-primary hover:text-primary duration-300"
             @click="goToPage(pageNumber)"
             :class="{
               'border-t-indigo-400 text-primary': pageNumber === currentPage,
@@ -207,7 +207,7 @@ watch(pagination, () => {
           </p>
         </div>
         <div
-          class="flex items-center pt-3 text-base-content"
+          class="flex items-center pt-3 text-base-content duration-300"
           :class="{
             'cursor-pointer hover:text-primary': currentPage !== pageCount,
             'cursor-not-allowed hover:text-error': currentPage === pageCount,

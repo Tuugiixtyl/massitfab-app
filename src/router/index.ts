@@ -3,6 +3,7 @@ import { destroyToken, getToken } from "@/utils/cookie_helper";
 import { checkTokenIsExpired } from "@/utils/jwt_helper";
 import store from "@/store";
 import { checkPermission } from "@/api/menu";
+import { getCartList, getWishlist } from "@/api/products";
 
 // Views
 import Home from "@/views/HomeView.vue";
@@ -70,11 +71,24 @@ const router = createRouter({
   ],
 });
 
+async function getTogglers() {
+  try {
+    const wishlistResponse = await getWishlist();
+    store.setWishlist(wishlistResponse.data.data.wishlist_items);
+
+    const cartListResponse = await getCartList();
+    store.setCartList(cartListResponse.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 async function checkLogin() {
   const refreshToken: string | boolean = getToken("access-token");
 
   if (refreshToken && !checkTokenIsExpired(<string>refreshToken)) {
     store.setIsLoggedIn(true);
+    await getTogglers();
   } else {
     store.setIsLoggedIn(false);
     destroyToken("access-token");

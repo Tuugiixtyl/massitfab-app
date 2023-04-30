@@ -42,6 +42,10 @@ async function getCartList() {
   return await callGet(`/cart/get`);
 }
 
+async function cartCheckout() {
+  return await callPostWithoutBody(`/cart/checkout`)
+}
+
 export {
   getLatestContents,
   getCategories,
@@ -52,4 +56,5 @@ export {
   cartToggle,
   getWishlist,
   getCartList,
+  cartCheckout,
 };

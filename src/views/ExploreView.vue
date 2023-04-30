@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { reactive, onBeforeMount, ref, computed, watch } from "vue";
-import HolyGrail from "../components/HolyGrailWidget.vue";
+import HolyGrail from "@/components/HolyGrailWidget.vue";
 import { useRouter } from "vue-router";
 
 // Layout
-import Layout from "../layout/index.vue";
+import Layout from "@/layout/index.vue";
 import {
   getLatestContents,
-  searchProduct,
-  getCartList,
-  getWishlist,
+  searchProduct
 } from "@/api/products";
 import store from "@/store";
 
@@ -105,17 +103,6 @@ function scrollToTop() {
     behavior: "smooth",
   });
 }
-async function getTogglers() {
-  try {
-    const wishlistResponse = await getWishlist();
-    store.setWishlist(wishlistResponse.data.data.wishlist_items);
-
-    const cartListResponse = await getCartList();
-    store.setCartList(cartListResponse.data.data.in_cart);
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 const displayedPageNumbers = computed(() => {
   const startPage = Math.max(currentPage.value - maxDisplayedPageNumbers, 1);
@@ -133,9 +120,6 @@ const displayedPageNumbers = computed(() => {
 });
 
 onBeforeMount(async () => {
-  if (store.isLoggedIn) {
-    await getTogglers();
-  };
   if (props.searchTerm === undefined || props.searchTerm === "") {
     await fetchData(currentPage.value);
   } else {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 // Layout
-import Layout from "../layout/index.vue";
+import Layout from "@/layout/index.vue";
 
 const router = useRouter();
 </script>

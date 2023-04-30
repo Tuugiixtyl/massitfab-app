@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, onMounted } from "vue";
+import { onBeforeMount, ref } from "vue";
 
 // Api
 import { toggleWishlist, cartToggle } from "@/api/products";
 
 // Store
-import store from "../store";
+import store from "@/store";
 
 const props = defineProps([
   "id",
@@ -45,7 +45,25 @@ async function toggleWishlisting() {
 async function toggleCartListing() {
   await cartToggle(props.id)
     .then((response) => {
-      in_cart.value = response.status === 201 ? true : false;
+      if (response.status === 201) {
+        in_cart.value = true;
+        store.cartlist.TotalInCart++;
+
+        const subtotal = Number(store.cartlist.cartSubtotal);
+        const price = Number(props.price);
+        if (!isNaN(subtotal) && !isNaN(price)) {
+          store.cartlist.cartSubtotal = (subtotal + price);
+        }
+      } else {
+        in_cart.value = false;
+        store.cartlist.TotalInCart--;
+
+        const subtotal = Number(store.cartlist.cartSubtotal);
+        const price = Number(props.price);
+        if (!isNaN(subtotal) && !isNaN(price)) {
+          store.cartlist.cartSubtotal = (subtotal - price);
+        }
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -61,7 +79,7 @@ onBeforeMount(() => {
   };
   if (store.isLoggedIn) {
     const wishlistData = store.wishlist;
-    const inCartData = store.in_cart;
+    const inCartData = store.cartlist.in_cart;
 
     if (wishlistData && wishlistData.some((item) => item.id === props.id)) {
       wishlisted.value = true;
@@ -76,22 +94,11 @@ onBeforeMount(() => {
 <template>
   <input type="checkbox" class="modal-toggle" :id="modalId" />
   <label :for="modalId" class="modal z-50 cursor-pointer">
-    <label
-      class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl duration-300"
-      for=""
-    >
+    <label class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl duration-300" for="">
       <div class="max-h-min">
         <div class="carousel rounded-box h-80">
-          <div
-            class="carousel-item w-full duration-700 ease-in-out"
-            v-for="(img, index) in gallery"
-            :key="index"
-          >
-            <img
-              :src="`${img}`"
-              class="w-full object-cover"
-              :alt="`image ${index}`"
-            />
+          <div class="carousel-item w-full duration-700 ease-in-out" v-for="(img, index) in gallery" :key="index">
+            <img :src="`${img}`" class="w-full object-cover" :alt="`image ${index}`" />
           </div>
         </div>
       </div>
@@ -114,6 +121,7 @@ onBeforeMount(() => {
         <h2 class="card-title text-5xl">{{ title }}</h2>
         <p class="text-xl">{{ description }}</p>
         <div class="card-actions justify-center md:justify-end">
+          <div class="badge badge-outline p-4 text-3xl my-auto"><i class="pi pi-money-bill mr-2" />${{ price }}</div>
           <button class="btn-primary btn">Buy Now</button>
         </div>
       </div>

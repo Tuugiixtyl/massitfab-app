@@ -9,10 +9,10 @@ import useVuelidate from "@vuelidate/core";
 import { required, helpers } from "@vuelidate/validators";
 
 // Api
-import { login, registerUser } from "../api/auth";
+import { login, registerUser } from "@/api/auth";
 
 // Store
-import store from "../store";
+import store from "@/store";
 import { setToken } from "@/utils/cookie_helper";
 
 const rules = {

@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 // Store
-import store from "../store";
+import store from "@/store";
 
 // Components
 import Header from "./Header.vue";
