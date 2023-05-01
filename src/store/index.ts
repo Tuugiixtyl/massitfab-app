@@ -42,10 +42,14 @@ const store = reactive({
     cartSubtotal: 0,
     TotalInCart: 0,
   },
-  setCartList(value: { in_cart: never[]; total_price: number; total_in_cart: number; }) {
+  setCartList(value: {
+    in_cart: never[];
+    total_price: number;
+    total_in_cart: number;
+  }) {
     this.cartlist.in_cart = value.in_cart;
     this.cartlist.cartSubtotal = value.total_price;
-    this.cartlist.TotalInCart = value.total_in_cart;    
+    this.cartlist.TotalInCart = value.total_in_cart;
   },
   isLoading: true,
   setIsLoading(value: boolean) {

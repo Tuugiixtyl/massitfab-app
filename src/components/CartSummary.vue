@@ -1,11 +1,12 @@
 <script setup lang="ts">
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps(["subtotal"]);
 
 // Store
-import store from "@/store"
+import store from "@/store";
 
 // Api
-import { cartCheckout } from "@/api/products"
+import { cartCheckout } from "@/api/products";
 import router from "@/router";
 
 async function checkout() {
@@ -20,12 +21,13 @@ async function checkout() {
     .catch((error) => {
       console.log(error);
     });
-};
+}
 </script>
 <template>
   <div class="h-full w-full bg-gray-100 lg:w-96">
     <div
-      class="flex h-auto flex-col justify-between overflow-y-auto px-4 py-6 md:px-7 md:py-10 lg:h-screen lg:px-8 lg:py-20">
+      class="flex h-auto flex-col justify-between overflow-y-auto px-4 py-6 md:px-7 md:py-10 lg:h-screen lg:px-8 lg:py-20"
+    >
       <div>
         <p class="text-3xl font-black leading-9 text-gray-800 lg:text-4xl">
           Summary
@@ -56,7 +58,9 @@ async function checkout() {
             ${{ subtotal }}
           </p>
         </div>
-        <button @click="checkout" class="btn btn-wide"><i class="pi pi-check-square pr-2"/> Checkout</button>
+        <button @click="checkout" class="btn-wide btn">
+          <i class="pi pi-check-square pr-2" /> Checkout
+        </button>
       </div>
     </div>
   </div>

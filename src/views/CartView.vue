@@ -9,13 +9,16 @@ import Layout from "@/layout/index.vue";
 import CartSummary from "@/components/CartSummary.vue";
 import CartProducts from "@/components/CartProducts.vue";
 
-// Api 
+// Api
 import { cartToggle } from "@/api/products";
 
 const products = ref([]);
 const subtotal = ref<number>();
 
-async function removeFromCart(removeFromCartValues: { product_id: number; index: number; }) {
+async function removeFromCart(removeFromCartValues: {
+  product_id: number;
+  index: number;
+}) {
   await cartToggle(removeFromCartValues.product_id)
     .then((response) => {
       if (response.status === 200) {
@@ -35,18 +38,30 @@ onMounted(() => {
 <template>
   <Layout>
     <div class="overflow-hidden">
-      <div class="h-full w-full overflow-y-auto overflow-x-hidden bg-opacity-90" id="chec-div">
-        <div class="h-full w-full transform overflow-x-hidden transition duration-700 ease-in-out" id="checkout">
-          <div class="flex flex-col items-end justify-center lg:flex-row" id="cart">
+      <div
+        class="h-full w-full overflow-y-auto overflow-x-hidden bg-opacity-90"
+        id="chec-div"
+      >
+        <div
+          class="h-full w-full transform overflow-x-hidden transition duration-700 ease-in-out"
+          id="checkout"
+        >
+          <div
+            class="flex flex-col items-end justify-center lg:flex-row"
+            id="cart"
+          >
             <div
               class="h-auto w-full overflow-y-auto overflow-x-hidden bg-white px-4 py-4 md:px-6 md:py-8 lg:h-screen lg:w-full lg:px-8 lg:py-14"
-              id="scroll">
-              <p class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl">
+              id="scroll"
+            >
+              <p
+                class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl"
+              >
                 Cart
               </p>
-              <CartProducts :products="products" @product="removeFromCart"/>
+              <CartProducts :products="products" @product="removeFromCart" />
             </div>
-            <CartSummary :subtotal="subtotal"/>
+            <CartSummary :subtotal="subtotal" />
           </div>
         </div>
       </div>

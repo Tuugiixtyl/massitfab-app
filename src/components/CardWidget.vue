@@ -52,7 +52,7 @@ async function toggleCartListing() {
         const subtotal = Number(store.cartlist.cartSubtotal);
         const price = Number(props.price);
         if (!isNaN(subtotal) && !isNaN(price)) {
-          store.cartlist.cartSubtotal = (subtotal + price);
+          store.cartlist.cartSubtotal = subtotal + price;
         }
       } else {
         in_cart.value = false;
@@ -61,7 +61,7 @@ async function toggleCartListing() {
         const subtotal = Number(store.cartlist.cartSubtotal);
         const price = Number(props.price);
         if (!isNaN(subtotal) && !isNaN(price)) {
-          store.cartlist.cartSubtotal = (subtotal - price);
+          store.cartlist.cartSubtotal = subtotal - price;
         }
       }
     })
@@ -94,11 +94,22 @@ onBeforeMount(() => {
 <template>
   <input type="checkbox" class="modal-toggle" :id="modalId" />
   <label :for="modalId" class="modal z-50 cursor-pointer">
-    <label class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl duration-300" for="">
+    <label
+      class="max-h-11/12 card modal-box relative w-11/12 max-w-5xl bg-base-100 shadow-xl duration-300"
+      for=""
+    >
       <div class="max-h-min">
         <div class="carousel rounded-box h-80">
-          <div class="carousel-item w-full duration-700 ease-in-out" v-for="(img, index) in gallery" :key="index">
-            <img :src="`${img}`" class="w-full object-cover" :alt="`image ${index}`" />
+          <div
+            class="carousel-item w-full duration-700 ease-in-out"
+            v-for="(img, index) in gallery"
+            :key="index"
+          >
+            <img
+              :src="`${img}`"
+              class="w-full object-cover"
+              :alt="`image ${index}`"
+            />
           </div>
         </div>
       </div>
@@ -121,7 +132,9 @@ onBeforeMount(() => {
         <h2 class="card-title text-5xl">{{ title }}</h2>
         <p class="text-xl">{{ description }}</p>
         <div class="card-actions justify-center md:justify-end">
-          <div class="badge badge-outline p-4 text-3xl my-auto"><i class="pi pi-money-bill mr-2" />${{ price }}</div>
+          <div class="badge-outline badge my-auto p-4 text-3xl">
+            <i class="pi pi-money-bill mr-2" />${{ price }}
+          </div>
           <button class="btn-primary btn">Buy Now</button>
         </div>
       </div>

@@ -139,7 +139,9 @@ function logout() {
           <label tabindex="0" class="btn-ghost btn-circle btn">
             <div class="indicator">
               <i class="pi pi-shopping-cart" style="font-size: 1.25rem"></i>
-              <span class="badge badge-sm badge-info indicator-item">{{ store.cartlist.TotalInCart }}</span>
+              <span class="badge-info badge badge-sm indicator-item">{{
+                store.cartlist.TotalInCart
+              }}</span>
             </div>
           </label>
           <div
@@ -147,8 +149,12 @@ function logout() {
             class="card dropdown-content card-compact mt-3 w-52 bg-base-200 shadow"
           >
             <div class="card-body">
-              <span class="text-lg font-bold">{{ store.cartlist.TotalInCart }} Items</span>
-              <span class="text-info">Subtotal: ${{ store.cartlist.cartSubtotal }}</span>
+              <span class="text-lg font-bold"
+                >{{ store.cartlist.TotalInCart }} Items</span
+              >
+              <span class="text-info"
+                >Subtotal: ${{ store.cartlist.cartSubtotal }}</span
+              >
               <div class="card-actions">
                 <button
                   @click="router.push('/checkout')"

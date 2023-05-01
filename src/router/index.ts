@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createRouter, createWebHistory } from "vue-router";
 import { destroyToken, getToken } from "@/utils/cookie_helper";
-import { checkTokenIsExpired } from "@/utils/jwt_helper";
+import { checkTokenIsExpired, getDecodedAccessToken } from "@/utils/jwt_helper";
 import store from "@/store";
 import { checkPermission } from "@/api/menu";
 import { getCartList, getWishlist } from "@/api/products";
@@ -88,6 +89,9 @@ async function checkLogin() {
 
   if (refreshToken && !checkTokenIsExpired(<string>refreshToken)) {
     store.setIsLoggedIn(true);
+    const token = getToken("access-token");
+    const key = getDecodedAccessToken(token);
+    store.setUserData(key.username);
     await getTogglers();
   } else {
     store.setIsLoggedIn(false);

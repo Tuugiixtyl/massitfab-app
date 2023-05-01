@@ -5,10 +5,7 @@ import { useRouter } from "vue-router";
 
 // Layout
 import Layout from "@/layout/index.vue";
-import {
-  getLatestContents,
-  searchProduct
-} from "@/api/products";
+import { getLatestContents, searchProduct } from "@/api/products";
 import store from "@/store";
 
 const props = defineProps({
@@ -124,7 +121,7 @@ onBeforeMount(async () => {
     await fetchData(currentPage.value);
   } else {
     await fetchSearchData(currentPage.value);
-  };
+  }
 });
 
 watch(pagination, () => {
