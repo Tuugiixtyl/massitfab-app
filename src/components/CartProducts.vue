@@ -14,7 +14,7 @@ function removeProduct(id: number, index: number) {
   <div
     v-for="(product, index) in products"
     :key="index"
-    class="items-strech border-t border-gray-50 py-8 md:flex md:py-10 lg:py-8"
+    class="items-strech border-t py-8 md:flex md:py-10 lg:py-8"
   >
     <div class="w-full md:w-4/12 2xl:w-1/4">
       <img
@@ -30,16 +30,16 @@ function removeProduct(id: number, index: number) {
     </div>
     <div class="flex flex-col justify-center md:w-8/12 md:pl-3 2xl:w-3/4">
       <div class="flex w-full items-center justify-between pt-1">
-        <p class="text-3xl font-black leading-none text-gray-800">
+        <p class="text-3xl font-black leading-none">
           {{ index + 1 }}. {{ product.title }}
         </p>
-        <p class="text-3xl font-black leading-none text-gray-800">
+        <p class="text-3xl font-black leading-none">
           <i class="pi pi-money-bill" /> ${{ product.st_price }}
         </p>
       </div>
       <div class="flex items-center justify-between pt-5">
         <div class="itemms-center flex">
-          <p class="cursor-pointer text-xs leading-3 text-gray-800 underline">
+          <p class="cursor-pointer text-xs leading-3 underline">
             Add to favorites
           </p>
           <p

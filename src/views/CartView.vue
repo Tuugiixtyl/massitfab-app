@@ -51,12 +51,10 @@ onMounted(() => {
             id="cart"
           >
             <div
-              class="h-auto w-full overflow-y-auto overflow-x-hidden bg-white px-4 py-4 md:px-6 md:py-8 lg:h-screen lg:w-full lg:px-8 lg:py-14"
+              class="h-auto w-full overflow-y-auto overflow-x-hidden px-4 py-4 md:px-6 md:py-8 lg:h-screen lg:w-full lg:px-8 lg:py-14"
               id="scroll"
             >
-              <p
-                class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl"
-              >
+              <p class="pt-3 text-3xl font-black leading-10 lg:text-4xl">
                 Cart
               </p>
               <CartProducts :products="products" @product="removeFromCart" />

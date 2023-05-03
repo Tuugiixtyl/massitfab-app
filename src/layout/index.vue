@@ -20,7 +20,7 @@ const props = defineProps({
   <main class="relative">
     <div
       v-if="store.isLoading"
-      class="absolute z-[100] flex h-full w-full bg-black bg-opacity-60 dark:bg-[#3737378d]"
+      class="absolute z-[100] flex h-full w-full bg-opacity-60 bg-[#3737378d]"
     >
       <div
         role="status"
@@ -28,7 +28,7 @@ const props = defineProps({
       >
         <svg
           aria-hidden="true"
-          class="mr-2 h-16 w-16 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
+          class="mr-2 h-16 w-16 animate-spin fill-blue-600 text-gray-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

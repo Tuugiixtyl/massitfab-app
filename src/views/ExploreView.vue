@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, onBeforeMount, ref, computed, watch } from "vue";
+import { reactive, onMounted, ref, computed, watch } from "vue";
 import HolyGrail from "@/components/HolyGrailWidget.vue";
 import { useRouter } from "vue-router";
 
@@ -116,7 +116,7 @@ const displayedPageNumbers = computed(() => {
   );
 });
 
-onBeforeMount(async () => {
+onMounted(async () => {
   if (props.searchTerm === undefined || props.searchTerm === "") {
     await fetchData(currentPage.value);
   } else {

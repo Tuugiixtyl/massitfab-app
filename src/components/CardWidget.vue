@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 // Api
 import { toggleWishlist, cartToggle } from "@/api/products";
@@ -70,7 +70,7 @@ async function toggleCartListing() {
     });
 }
 
-onBeforeMount(() => {
+onMounted(() => {
   selectedProduct.value = {
     title: props.title,
     description: props.description,

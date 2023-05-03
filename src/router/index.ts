@@ -17,7 +17,6 @@ import Checkout from "@/views/CartView.vue";
 import NotFound from "@/views/NotFoundView.vue";
 import Upload from "@/views/UploadView.vue";
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -41,7 +40,7 @@ const router = createRouter({
       name: "explore",
       component: Explore,
       props: (route) => ({
-        searchTerm: route.query.searchTerm
+        searchTerm: route.query.searchTerm,
       }),
     },
     {
@@ -82,7 +81,7 @@ async function getTogglers() {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
 async function checkLogin() {
   const refreshToken: string | boolean = getToken("access-token");
@@ -105,7 +104,7 @@ router.beforeEach(async (to) => {
 
   await checkLogin();
 
-  const routes = ["home"];
+  //   const routes = ["home"];
 
   // if (!store.isLoggedIn) {
   //   if (!routes.includes(<string>to.name)) {

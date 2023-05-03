@@ -274,7 +274,7 @@
 }
 
 .screen > .screen-image {
-  background-image: url("hallway.jpg");
+  background-image: url("/hideoutpublic/img/hallway.jpg");
   height: 100%;
   width: 100%;
   position: absolute;
