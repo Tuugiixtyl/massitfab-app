@@ -104,33 +104,33 @@ router.beforeEach(async (to) => {
 
   await checkLogin();
 
-  //   const routes = ["home"];
+  const routes = ["home", "features", "explore", "profile", "404", "join"];
 
-  // if (!store.isLoggedIn) {
-  //   if (!routes.includes(<string>to.name)) {
-  //     return {
-  //       name: "join",
-  //     };
-  //   }
-  // } else {
-  //   const lockedRoutes = ["home"];
+  if (!store.isLoggedIn) {
+    if (!routes.includes(<string>to.name)) {
+      return {
+        name: "home",
+      };
+    }
+  } else {
+    const lockedRoutes = ["join"];
 
-  //   if (lockedRoutes.includes(<string>to.name)) {
-  //     return {
-  //       name: "home",
-  //     };
-  //   }
+    if (lockedRoutes.includes(<string>to.name)) {
+      return {
+        name: "home",
+      };
+    }
 
-  //   const permission = await checkPermission({
-  //     route_name: to.name,
-  //   });
+    // const permission = await checkPermission({
+    //   route_name: to.name,
+    // });
 
-  //   if (!permission.data && !routes.includes(<string>to.name)) {
-  //     return {
-  //       name: "about",
-  //     };
-  //   }
-  // }
+    // if (!permission.data && !routes.includes(<string>to.name)) {
+    //   return {
+    //     name: "about",
+    //   };
+    // }
+  }
 });
 
 router.afterEach(() => {

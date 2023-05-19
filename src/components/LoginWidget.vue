@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 
 // Vue Router
 import { useRouter } from "vue-router";
@@ -31,7 +31,6 @@ const rules = {
 };
 
 const router = useRouter();
-
 const state = reactive({
   email: "",
   password: "",
@@ -57,9 +56,9 @@ async function loginUser() {
         store.userData.username = dt.username;
         store.setIsLoggedIn(true);
 
-        router.push("/").then(() => {
-          router.go(0);
-        });
+        router.push("/");
+      } else {
+        const { data } = response;
       }
     } else {
       console.log("Та мэдээлэлээ шалгаад дахин оролдоно уу!");
@@ -88,6 +87,7 @@ async function loginUser() {
           placeholder="email"
           class="input-bordered input"
           v-model="state.email"
+          @keyup.enter="loginUser"
         />
         <div v-if="v$.email.$errors">
           <div v-for="error in v$.email.$errors" :key="error.$uid">
@@ -106,6 +106,7 @@ async function loginUser() {
           placeholder="password"
           class="input-bordered input"
           v-model="state.password"
+          @keyup.enter="loginUser"
         />
         <div v-if="v$.password.$errors">
           <div v-for="error in v$.password.$errors" :key="error.$uid">

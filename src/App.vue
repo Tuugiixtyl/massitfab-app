@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { onBeforeMount, watch, ref } from "vue";
-
+import { onMounted, watch, ref } from "vue";
 import { RouterView } from "vue-router";
+import "primevue/resources/primevue.min.css";
 
 // Store
 import store from "@/store";
-
-const themeIndex = ref(0);
 
 //------ foreshadowing the future theme toggler -------//
 
@@ -29,7 +27,7 @@ const themeIndex = ref(0);
 </script>
 
 <template>
-  <div id="mfabTheme" data-theme="dracula">
+  <div id="mfabTheme" data-theme="light">
     <main>
       <RouterView />
     </main>

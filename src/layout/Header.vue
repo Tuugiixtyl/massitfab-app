@@ -38,12 +38,7 @@ function logout() {
             </li>
             <li><a @click="router.push('/features')">Features</a></li>
             <li>
-              <a
-                @click="
-                  router.push('/explore')
-                "
-                >Explore</a
-              >
+              <a @click="router.push('/explore')">Explore</a>
             </li>
           </ul>
         </div>
@@ -69,9 +64,7 @@ function logout() {
           <span class="link-underline link-underline-black"> Features </span>
         </a>
         <a
-          @click="
-            router.push('/explore')
-          "
+          @click="router.push('/explore')"
           class="btn-ghost btn animate-text bg-gradient-to-r from-base-content via-info to-success-content bg-clip-text text-lg normal-case text-transparent"
         >
           <span class="link-underline link-underline-black"> Explore </span>

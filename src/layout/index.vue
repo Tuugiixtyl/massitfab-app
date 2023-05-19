@@ -8,6 +8,7 @@ import Header from "./Header.vue";
 import Drawer from "./Drawer.vue";
 import Footer from "./Footer.vue";
 import Breadcrumb from "./Breadcrumb.vue";
+import Toaster from "./Toaster.vue";
 
 const props = defineProps({
   title: String,
@@ -47,6 +48,9 @@ const props = defineProps({
     </div>
     <div class="col-span-12 flex min-h-screen flex-col lg:col-span-10">
       <Header />
+      <div>
+        <Toaster />
+      </div>
       <div
         v-if="background"
         class="flex flex-grow flex-col space-y-5 rounded-lg p-5 shadow-lg"
