@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import Toaster from "@/layout/Toaster.vue"
 
 // Vue Router
 import { useRouter } from "vue-router";
@@ -16,10 +17,11 @@ import { login } from "@/api/auth";
 
 // Utils
 import { setToken } from "@/utils/cookie_helper";
+import { getDecodedAccessToken } from "@/utils/jwt_helper";
+import { showToast } from "@/utils/toast_helper";
 
 // Dto
 import type AuthErrorDto from "@/_dto/auth_error.dto";
-import { getDecodedAccessToken } from "@/utils/jwt_helper";
 
 const rules = {
   email: {
@@ -48,7 +50,7 @@ async function loginUser() {
       if (response.status === 200) {
         const { data } = response;
 
-        console.log("success");
+        showToast(data.message, "success", 3000);
 
         setToken("access-token", data.access);
         const dt = getDecodedAccessToken(data.access);
@@ -57,8 +59,6 @@ async function loginUser() {
         store.setIsLoggedIn(true);
 
         router.push("/");
-      } else {
-        const { data } = response;
       }
     } else {
       console.log("Та мэдээлэлээ шалгаад дахин оролдоно уу!");
@@ -69,6 +69,7 @@ async function loginUser() {
     if (response.status === 400) {
       const { data } = response;
 
+      showToast((data as AuthErrorDto).message, "error", 3000);
       console.log("Алдаа", (data as AuthErrorDto).message);
     }
   }
@@ -77,6 +78,7 @@ async function loginUser() {
 
 <template>
   <div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
+    <Toaster />
     <div class="card-body">
       <div class="form-control">
         <label class="label">

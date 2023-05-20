@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref, computed, onMounted } from "vue";
 import { getCategories, uploadNewContent } from "@/api/products";
+import { showToast } from "@/utils/toast_helper";
 
 // Layout
 import Layout from "@/layout/index.vue";
@@ -140,7 +141,8 @@ async function uploadContent() {
   await uploadNewContent(formData)
     .then((response) => {
       if (response.status === 201) {
-        console.log("toast: successful upload");
+        const { data } = response
+        showToast(data.message, "success", 3000);
 
         router.push("/profile/" + store.userData.username + "/");
       }

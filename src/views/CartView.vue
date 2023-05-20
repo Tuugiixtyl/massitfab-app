@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { showToast } from "@/utils/toast_helper";
 
 // Store
 import store from "@/store";
@@ -22,6 +23,9 @@ async function removeFromCart(removeFromCartValues: {
   await cartToggle(removeFromCartValues.product_id)
     .then((response) => {
       if (response.status === 200) {
+        const { data } = response;
+
+        showToast(data.message, "success", 3000);
         products.value.splice(removeFromCartValues.index, 1);
       }
     })

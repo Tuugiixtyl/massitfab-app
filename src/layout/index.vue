@@ -21,7 +21,7 @@ const props = defineProps({
   <main class="relative">
     <div
       v-if="store.isLoading"
-      class="absolute z-[100] flex h-full w-full bg-opacity-60 bg-[#3737378d]"
+      class="absolute z-[100] flex h-full w-full bg-[#3737378d] bg-opacity-60"
     >
       <div
         role="status"
@@ -48,9 +48,7 @@ const props = defineProps({
     </div>
     <div class="col-span-12 flex min-h-screen flex-col lg:col-span-10">
       <Header />
-      <div>
-        <Toaster />
-      </div>
+      <Toaster />
       <div
         v-if="background"
         class="flex flex-grow flex-col space-y-5 rounded-lg p-5 shadow-lg"

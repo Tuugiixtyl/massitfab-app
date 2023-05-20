@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref } from "vue";
 import { RouterView } from "vue-router";
-import "primevue/resources/primevue.min.css";
 
 // Store
 import store from "@/store";

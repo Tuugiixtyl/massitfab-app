@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { showToast } from "@/utils/toast_helper";
 
 // Api
 import { toggleWishlist, cartToggle } from "@/api/products";
@@ -35,7 +36,14 @@ async function toggleWishlisting() {
   formData.append("product_id", props.id);
   await toggleWishlist(formData)
     .then((response) => {
-      wishlisted.value = response.status === 201 ? true : false;
+      const { data } = response;
+      if (response.status === 201) {
+        showToast(data.message, "success", 3000);
+        wishlisted.value = true;
+      } else if (response.status == 200) {
+        showToast(data.message, "info", 3000);
+        wishlisted.value = false;
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -45,10 +53,12 @@ async function toggleWishlisting() {
 async function toggleCartListing() {
   await cartToggle(props.id)
     .then((response) => {
+      const { data } = response;
       if (response.status === 201) {
         in_cart.value = true;
         store.cartlist.TotalInCart++;
 
+        showToast(data.message, "success", 3000);
         const subtotal = Number(store.cartlist.cartSubtotal);
         const price = Number(props.price);
         if (!isNaN(subtotal) && !isNaN(price)) {
@@ -58,6 +68,7 @@ async function toggleCartListing() {
         in_cart.value = false;
         store.cartlist.TotalInCart--;
 
+        showToast(data.message, "info", 3000);
         const subtotal = Number(store.cartlist.cartSubtotal);
         const price = Number(props.price);
         if (!isNaN(subtotal) && !isNaN(price)) {

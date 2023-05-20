@@ -38,16 +38,10 @@ export const visibleToasts = computed(() => {
   return toasts.value.filter((toast) => toast.visible);
 });
 
-watch(visibleToasts, (newToasts) => {
-  if (newToasts.length > 0) {
-    const highestTimeout = Math.max(...newToasts.map((toast) => toast.timeout));
-    setTimeout(() => {
-      const toastToRemove = toasts.value.find(
-        (toast) => toast.timeout === highestTimeout,
-      );
-      if (toastToRemove) {
-        removeToast(toastToRemove);
-      }
-    }, highestTimeout);
-  }
+watch(toasts, (newToasts) => {
+  newToasts.forEach((toast) => {
+    if (!toast.visible) {
+      removeToast(toast);
+    }
+  });
 });
